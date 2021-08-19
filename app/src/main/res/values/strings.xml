@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Cinemobile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="language">en-US</string>
+    <string name="movies">Movies</string>
+    <string name="series">Series</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="settings">Settings</string>
+    <string name="view_all">View All</string>
+    <string name="hello_blank_fragment" />
+    <string name="home">Home</string>
+    <string name="overview">Overview</string>
+    <string name="production_companies">Production Companies</string>
+    <string name="production_countries">Production Countries</string>
+    <string name="minute">min</string>
+</resources>

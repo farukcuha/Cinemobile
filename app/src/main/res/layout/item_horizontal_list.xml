@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="4dp">
+
+    <ImageView
+        android:id="@+id/image_view_image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        tools:ignore="MissingConstraints"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_holder_poster"/>
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Teen Titans Go!"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="14sp"
+        android:textColor="@color/color_1"
+        android:maxLines="2"
+        android:layout_marginHorizontal="2dp"/>
+    <TextView
+        android:id="@+id/text_view_release_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2014"
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:layout_marginHorizontal="2dp"/>
+
+</LinearLayout>

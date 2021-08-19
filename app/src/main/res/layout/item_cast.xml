@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="4dp">
+
+    <ImageView
+        android:id="@+id/image_view_cast_image"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/image_holder_cast"/>
+
+    <TextView
+        android:id="@+id/text_view_cast_real_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Ufuk Bayraktar"
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/color_1"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/text_view_cast_character_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Uzman Çavuş Bekir Özbey"
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="14sp"/>
+
+</LinearLayout>

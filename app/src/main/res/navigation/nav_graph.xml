@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_movies"
+        android:name="com.pandorina.cinemobile.view.fragment.movie.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/nav_movie_detail" />
+        <action
+            android:id="@+id/action_moviesFragment_to_genresFragment"
+            app:destination="@id/nav_genres" />
+        <action
+            android:id="@+id/action_moviesFragment_to_moreMoviesFragment"
+            app:destination="@id/nav_more_movies" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_movie_detail"
+        android:name="com.pandorina.cinemobile.view.fragment.movie.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+
+        <argument
+            android:name="movie_arg"
+            app:argType="com.pandorina.cinemobile.model.Movie"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_genres"
+        android:name="com.pandorina.cinemobile.view.fragment.common.GenreListFragment"
+        android:label="fragment_genres"
+        tools:layout="@layout/fragment_genre_list" >
+        <action
+            android:id="@+id/action_nav_genres_to_moviesByGenresFragment"
+            app:destination="@id/moviesByGenresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.pandorina.cinemobile.view.fragment.favorite.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_nav_favorites_to_nav_movie_detail"
+            app:destination="@id/nav_movie_detail" />
+        <action
+            android:id="@+id/action_nav_favorites_to_nav_series_detail"
+            app:destination="@id/nav_series_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_series"
+        android:name="com.pandorina.cinemobile.view.fragment.series.SeriesFragment"
+        android:label="fragment_series"
+        tools:layout="@layout/fragment_series" >
+        <action
+            android:id="@+id/action_seriesFragment_to_seriesDetailFragment"
+            app:destination="@id/nav_series_detail" />
+        <action
+            android:id="@+id/action_seriesFragment_to_genresFragment"
+            app:destination="@id/nav_genres" />
+        <action
+            android:id="@+id/action_seriesFragment_to_moreSeriesFragment"
+            app:destination="@id/nav_more_series" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.pandorina.cinemobile.view.fragment.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_seriesDetailFragment"
+            app:destination="@id/nav_series_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_series_detail"
+        android:name="com.pandorina.cinemobile.view.fragment.series.SeriesDetailFragment"
+        android:label="fragment_series_detail"
+        tools:layout="@layout/fragment_series_detail" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.pandorina.cinemobile.view.fragment.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/nav_more_movies"
+        android:name="com.pandorina.cinemobile.view.fragment.movie.MoreMoviesFragment"
+        android:label="fragment_more_movies"
+        tools:layout="@layout/fragment_more_movies" >
+        <action
+            android:id="@+id/action_nav_more_movies_to_nav_movie_detail"
+            app:destination="@id/nav_movie_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_more_series"
+        android:name="com.pandorina.cinemobile.view.fragment.series.MoreSeriesFragment"
+        android:label="fragment_more_series"
+        tools:layout="@layout/fragment_more_series" />
+    <fragment
+        android:id="@+id/moviesByGenresFragment"
+        android:name="com.pandorina.cinemobile.view.fragment.movie.MoviesByGenresFragment"
+        android:label="fragment_movies_by_genres"
+        tools:layout="@layout/fragment_movies_by_genres" >
+
+        <argument
+            android:name="genre_arg"
+            app:argType="com.pandorina.cinemobile.model.Genre"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_moviesByGenresFragment_to_nav_movie_detail"
+            app:destination="@id/nav_movie_detail" />
+    </fragment>
+</navigation>

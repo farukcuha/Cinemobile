@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shimmer_repeat_delay="@integer/material_motion_duration_medium_1"
+    app:shimmer_auto_start="true"
+    app:shimmer_repeat_mode="restart"
+    android:background="@color/color_2"/>
