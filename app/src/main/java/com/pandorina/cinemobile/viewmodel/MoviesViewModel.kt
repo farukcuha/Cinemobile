@@ -1,16 +1,11 @@
 package com.pandorina.cinemobile.viewmodel
 
-import androidx.annotation.StringRes
 import androidx.lifecycle.*
-import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.model.MovieResponse
-import com.pandorina.cinemobile.repository.Repository
+import com.pandorina.cinemobile.data.Repository
+import com.pandorina.cinemobile.data.model.MovieResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import java.lang.Exception
-import java.util.concurrent.Flow
 import javax.inject.Inject
 
 @HiltViewModel

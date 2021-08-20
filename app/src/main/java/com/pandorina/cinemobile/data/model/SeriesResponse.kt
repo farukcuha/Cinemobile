@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile.model
+package com.pandorina.cinemobile.data.model
 
 class SeriesResponse(val page: Int,
                      val results: ArrayList<Series>,

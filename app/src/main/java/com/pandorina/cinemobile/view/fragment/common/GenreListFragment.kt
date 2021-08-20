@@ -6,13 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pandorina.cinemobile.NetworkResult
+import com.pandorina.cinemobile.data.NetworkResult
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.GenreListAdapter
 import com.pandorina.cinemobile.databinding.FragmentGenreListBinding
-import com.pandorina.cinemobile.model.Genre
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.Util
 import com.pandorina.cinemobile.util.Util.setActionBarText
 import com.pandorina.cinemobile.viewmodel.GenresListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,17 +21,21 @@ class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
     val binding get() = _binding!!
 
     private val viewModel by viewModels<GenresListViewModel>()
+    lateinit var mAdapter: GenreListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentGenreListBinding.bind(view)
         activity?.let { setActionBarText(it, "Genres") }
+
+        mAdapter = GenreListAdapter(listOf())
+        setUpRecyclerView()
         getData()
     }
 
-    private fun setUpRecyclerView(list: List<Genre>){
+    private fun setUpRecyclerView(){
         binding.recyclerViewGenres.apply {
             setHasFixedSize(true)
-            adapter = GenreListAdapter(list)
+            adapter = mAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
@@ -43,8 +45,11 @@ class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
         viewModel.genreResponse.observe(viewLifecycleOwner){ response ->
             when(response){
                 is NetworkResult.Success -> {
-                    response.data?.let {
-                        setUpRecyclerView(it.genres)
+                    response.data?.let { genreResponse ->
+                       mAdapter.apply {
+                           list = genreResponse.genres
+                           notifyDataSetChanged()
+                       }
                     }
                 }
                 is NetworkResult.Loading -> {
@@ -54,7 +59,6 @@ class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
                     Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                 }
             }
-
         }
     }
 }

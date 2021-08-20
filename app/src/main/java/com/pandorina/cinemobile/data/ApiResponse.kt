@@ -1,10 +1,10 @@
-package com.pandorina.cinemobile
+package com.pandorina.cinemobile.data
 
 import retrofit2.Response import java.lang.Exception
 
 abstract class ApiResponse {
     suspend fun <T> safeApiCall(apiCall: suspend () -> Response<T>):
-            NetworkResult<T>{
+            NetworkResult<T> {
         try {
             val response = apiCall()
             if (response.isSuccessful){
@@ -21,13 +21,4 @@ abstract class ApiResponse {
     }
     private fun <T> error(errorMessage: String): NetworkResult<T> =
             NetworkResult.Error("Api call failed: $errorMessage")
-}
-
-sealed class NetworkResult<T>(
-        val data: T? = null,
-        val message: String? = null
-) {
-    class Success<T>(data: T) : NetworkResult<T>(data)
-    class Error<T>(message: String, data: T? = null) : NetworkResult<T>(data, message)
-    class Loading<T> : NetworkResult<T>()
 }

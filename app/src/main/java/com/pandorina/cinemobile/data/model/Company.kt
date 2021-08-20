@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile.model
+package com.pandorina.cinemobile.data.model
 
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Util

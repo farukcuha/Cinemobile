@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.databinding.ItemCastBinding
-import com.pandorina.cinemobile.model.Credit
+import com.pandorina.cinemobile.data.model.Credit
 import com.pandorina.cinemobile.util.loadImage
 
 class CastAdapter(var list: ArrayList<Credit>): RecyclerView.Adapter<CastAdapter.Holder>() {

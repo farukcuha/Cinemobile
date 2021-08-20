@@ -2,11 +2,10 @@ package com.pandorina.cinemobile.di
 
 import android.content.Context
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.repository.Repository
-import com.pandorina.cinemobile.TMDBApi
-import com.pandorina.cinemobile.model.Company
+import com.pandorina.cinemobile.data.Repository
+import com.pandorina.cinemobile.data.resource.remote.RemoteDataSource
+import com.pandorina.cinemobile.data.resource.remote.TMDBApi
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.Util
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,6 +49,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepo(api: TMDBApi): Repository = Repository(api)
+    fun provideRemoteDataSource(api: TMDBApi): RemoteDataSource = RemoteDataSource(api)
 
+    @Provides
+    @Singleton
+    fun provideRepo(remoteDataSource: RemoteDataSource): Repository = Repository(remoteDataSource)
 }

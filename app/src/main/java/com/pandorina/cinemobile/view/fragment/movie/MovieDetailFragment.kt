@@ -10,7 +10,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.MovieDetailViewPagerAdapter
 import com.pandorina.cinemobile.databinding.FragmentMovieDetailBinding
-import com.pandorina.cinemobile.model.Movie
+import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.util.loadImage
 import dagger.hilt.android.AndroidEntryPoint
 

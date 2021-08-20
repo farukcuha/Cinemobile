@@ -10,8 +10,8 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.ProductionCompaniesAdapter
 import com.pandorina.cinemobile.view.adapter.ProductionCountriesAdapter
 import com.pandorina.cinemobile.databinding.FragmentMovieOverviewBinding
-import com.pandorina.cinemobile.model.Movie
-import com.pandorina.cinemobile.model.MovieDetail
+import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.data.model.MovieDetail
 import com.pandorina.cinemobile.util.loadImage
 import com.pandorina.cinemobile.viewmodel.MovieOverviewViewModel
 import dagger.hilt.android.AndroidEntryPoint

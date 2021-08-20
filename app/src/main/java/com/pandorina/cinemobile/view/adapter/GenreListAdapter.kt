@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.databinding.ItemGenreBinding
-import com.pandorina.cinemobile.model.Genre
+import com.pandorina.cinemobile.data.model.Genre
 import com.pandorina.cinemobile.view.fragment.common.GenreListFragmentDirections
 
 
@@ -33,6 +33,7 @@ class GenreListAdapter(var list: List<Genre>): RecyclerView.Adapter<GenreListAda
     }
 
     override fun getItemCount(): Int = list.size
+
 
 
 }

@@ -1,9 +1,9 @@
-package com.pandorina.cinemobile.paging
+package com.pandorina.cinemobile.data.resource.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.pandorina.cinemobile.TMDBApi
-import com.pandorina.cinemobile.model.Movie
+import com.pandorina.cinemobile.data.resource.remote.TMDBApi
+import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.util.Constant.DEFAULT_STARTING_PAGE_INDEX
 class MoreMoviesPagingSource(
     private val api: TMDBApi,

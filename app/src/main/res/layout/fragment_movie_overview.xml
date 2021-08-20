@@ -91,7 +91,7 @@
                 layout="@layout/text_view_header_2" />
 
 
-            <com.pandorina.cinemobile.NestedScrollableHost
+            <com.pandorina.cinemobile.util.NestedScrollableHost
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <androidx.recyclerview.widget.RecyclerView
@@ -102,13 +102,13 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="4"
                     tools:listitem="@layout/item_production_companies" />
-            </com.pandorina.cinemobile.NestedScrollableHost>
+            </com.pandorina.cinemobile.util.NestedScrollableHost>
 
             <include
                 android:id="@+id/text_view_movie_overview_production_countries_header"
                 layout="@layout/text_view_header_2" />
 
-            <com.pandorina.cinemobile.NestedScrollableHost
+            <com.pandorina.cinemobile.util.NestedScrollableHost
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <androidx.recyclerview.widget.RecyclerView
@@ -119,7 +119,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="3"
                     tools:listitem="@layout/item_production_countries" />
-            </com.pandorina.cinemobile.NestedScrollableHost>
+            </com.pandorina.cinemobile.util.NestedScrollableHost>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

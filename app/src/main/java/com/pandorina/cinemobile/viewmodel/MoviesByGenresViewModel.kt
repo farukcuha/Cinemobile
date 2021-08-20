@@ -3,10 +3,9 @@ package com.pandorina.cinemobile.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import androidx.paging.cachedIn
-import com.pandorina.cinemobile.model.Movie
-import com.pandorina.cinemobile.repository.Repository
+import com.pandorina.cinemobile.data.Repository
+import com.pandorina.cinemobile.data.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

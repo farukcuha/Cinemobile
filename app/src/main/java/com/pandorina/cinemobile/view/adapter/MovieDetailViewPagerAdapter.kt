@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.pandorina.cinemobile.model.Movie
+import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.view.fragment.movie.*
 
 class MovieDetailViewPagerAdapter(

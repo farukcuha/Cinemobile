@@ -1,8 +1,8 @@
 package com.pandorina.cinemobile.viewmodel
 
 import androidx.lifecycle.*
-import com.pandorina.cinemobile.model.CreditResponse
-import com.pandorina.cinemobile.repository.Repository
+import com.pandorina.cinemobile.data.Repository
+import com.pandorina.cinemobile.data.model.CreditResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

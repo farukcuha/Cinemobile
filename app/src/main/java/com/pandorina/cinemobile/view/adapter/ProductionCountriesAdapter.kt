@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.databinding.ItemProductionCompaniesBinding
 import com.pandorina.cinemobile.databinding.ItemProductionCountriesBinding
-import com.pandorina.cinemobile.model.Country
+import com.pandorina.cinemobile.data.model.Country
 import com.pandorina.cinemobile.util.loadImage
 
 class ProductionCountriesAdapter(val list: ArrayList<Country>): RecyclerView.Adapter<ProductionCountriesAdapter.Holder>() {

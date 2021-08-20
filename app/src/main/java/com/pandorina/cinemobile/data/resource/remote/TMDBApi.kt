@@ -1,8 +1,10 @@
-package com.pandorina.cinemobile
+package com.pandorina.cinemobile.data.resource.remote
 
 import androidx.lifecycle.LiveData
-import com.pandorina.cinemobile.model.*
-import kotlinx.coroutines.flow.Flow
+import com.pandorina.cinemobile.data.model.CreditResponse
+import com.pandorina.cinemobile.data.model.GenreResponse
+import com.pandorina.cinemobile.data.model.MovieDetail
+import com.pandorina.cinemobile.data.model.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile.model
+package com.pandorina.cinemobile.data.model
 
 import android.os.Parcelable
 import com.pandorina.cinemobile.util.Constant

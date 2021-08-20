@@ -1,12 +1,11 @@
 package com.pandorina.cinemobile.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import  androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pandorina.cinemobile.model.MovieDetail
-import com.pandorina.cinemobile.repository.Repository
+import com.pandorina.cinemobile.data.Repository
+import com.pandorina.cinemobile.data.model.MovieDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.model.Movie
+import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Util
 import com.pandorina.cinemobile.util.loadImage

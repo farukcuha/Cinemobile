@@ -1,7 +1,4 @@
-package com.pandorina.cinemobile
-
-
-
+package com.pandorina.cinemobile.util
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
