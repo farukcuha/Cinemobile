@@ -13,13 +13,32 @@
         tools:layout="@layout/fragment_movies" >
         <action
             android:id="@+id/action_moviesFragment_to_movieDetailFragment"
-            app:destination="@id/nav_movie_detail" />
+            app:destination="@id/nav_movie_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
         <action
             android:id="@+id/action_moviesFragment_to_genresFragment"
-            app:destination="@id/nav_genres" />
+            app:destination="@id/nav_genres"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_moviesFragment_to_moreMoviesFragment"
-            app:destination="@id/nav_more_movies" />
+            app:destination="@id/nav_more_movies"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_nav_movies_to_movieSearchFragment"
+            app:destination="@id/movieSearchFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/nav_movie_detail"
@@ -39,7 +58,11 @@
         tools:layout="@layout/fragment_genre_list" >
         <action
             android:id="@+id/action_nav_genres_to_moviesByGenresFragment"
-            app:destination="@id/moviesByGenresFragment" />
+            app:destination="@id/moviesByGenresFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/nav_favorites"
@@ -48,10 +71,18 @@
         tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/action_nav_favorites_to_nav_movie_detail"
-            app:destination="@id/nav_movie_detail" />
+            app:destination="@id/nav_movie_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_nav_favorites_to_nav_series_detail"
-            app:destination="@id/nav_series_detail" />
+            app:destination="@id/nav_series_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/nav_series"
@@ -60,13 +91,25 @@
         tools:layout="@layout/fragment_series" >
         <action
             android:id="@+id/action_seriesFragment_to_seriesDetailFragment"
-            app:destination="@id/nav_series_detail" />
+            app:destination="@id/nav_series_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_seriesFragment_to_genresFragment"
-            app:destination="@id/nav_genres" />
+            app:destination="@id/nav_genres"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_seriesFragment_to_moreSeriesFragment"
-            app:destination="@id/nav_more_series" />
+            app:destination="@id/nav_more_series"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/nav_home"
@@ -75,7 +118,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_seriesDetailFragment"
-            app:destination="@id/nav_series_detail" />
+            app:destination="@id/nav_series_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/nav_series_detail"
@@ -94,7 +141,11 @@
         tools:layout="@layout/fragment_more_movies" >
         <action
             android:id="@+id/action_nav_more_movies_to_nav_movie_detail"
-            app:destination="@id/nav_movie_detail" />
+            app:destination="@id/nav_movie_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/nav_more_series"
@@ -113,6 +164,23 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_moviesByGenresFragment_to_nav_movie_detail"
-            app:destination="@id/nav_movie_detail" />
+            app:destination="@id/nav_movie_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/movieSearchFragment"
+        android:name="com.pandorina.cinemobile.view.fragment.movie.MovieSearchFragment"
+        android:label="fragment_movie_search"
+        tools:layout="@layout/fragment_movie_search" >
+        <action
+            android:id="@+id/action_movieSearchFragment_to_nav_movie_detail"
+            app:destination="@id/nav_movie_detail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
 </navigation>

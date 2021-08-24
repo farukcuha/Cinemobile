@@ -36,6 +36,12 @@ interface TMDBApi {
         @Query("page") page: Int
     ): Response<MovieResponse>
 
+    @GET("search/movie")
+    suspend fun getSearchMovies(
+            @Query("query") query: String,
+            @Query("page") page: Int
+    ): MovieResponse
+
     @GET("movie/{movie_id}")
     suspend fun getMovieDetail(
         @Path("movie_id") movie_id: Int

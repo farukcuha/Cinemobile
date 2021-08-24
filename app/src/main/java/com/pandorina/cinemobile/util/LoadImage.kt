@@ -9,11 +9,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.pandorina.cinemobile.R
 
-fun ImageView.loadImage(url: String?, isRounded: Boolean? = false){
+fun ImageView.loadImage(url: String?){
     Glide.with(context)
             .load(url)
             .transition(DrawableTransitionOptions.withCrossFade())
-            .transform(RoundedCorners(if(isRounded == true) 20 else 1))
             .error(R.drawable.image_place_holder)
             .into(this)
 

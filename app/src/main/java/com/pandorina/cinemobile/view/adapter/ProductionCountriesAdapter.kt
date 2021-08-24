@@ -8,7 +8,8 @@ import com.pandorina.cinemobile.databinding.ItemProductionCountriesBinding
 import com.pandorina.cinemobile.data.model.Country
 import com.pandorina.cinemobile.util.loadImage
 
-class ProductionCountriesAdapter(val list: ArrayList<Country>): RecyclerView.Adapter<ProductionCountriesAdapter.Holder>() {
+class ProductionCountriesAdapter: RecyclerView.Adapter<ProductionCountriesAdapter.Holder>() {
+    var list = listOf<Country>()
     class Holder(val binding: ItemProductionCountriesBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Country){
             val flagImageUrl = "https://www.countryflags.io/${item.iso_3166_1}/shiny/64.png"
@@ -28,11 +29,4 @@ class ProductionCountriesAdapter(val list: ArrayList<Country>): RecyclerView.Ada
     }
 
     override fun getItemCount(): Int = list.size
-
-    fun updateList(updatedList: List<Country>){
-        list.clear()
-        list.addAll(updatedList)
-        notifyDataSetChanged()
-    }
-
 }

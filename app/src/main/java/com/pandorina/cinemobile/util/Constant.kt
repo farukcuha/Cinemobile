@@ -7,10 +7,16 @@ object Constant {
     const val API_URL = "https://api.themoviedb.org/3/"
     const val ITEM_TYPE_SHIMMER = 0
     const val ITEM_TYPE_MOVIE = 1
-    const val ITEM_TYPE_SERIES = 2
-    const val ITEM_TYPE_HEADER = 3
+
     const val DEFAULT_STARTING_PAGE_INDEX = 1
-    const val TAB_COUNT = 4
-    const val STRING_MOVIE = "movie"
-    const val STRING_SERIES = "tv"
+
+    const val PATH_MOVIE = "movie"
+    const val PATH_SERIES = "tv"
+
+    const val PATH_POPULAR = "popular"
+    const val PATH_TOP_RATED = "top_rated"
+    const val PATH_NOW_PLAYING = "now_playing"
+    const val PATH_UPCOMING = "upcoming"
+
+
 }

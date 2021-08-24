@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.view.fragment.movie.*
 
 class MovieDetailViewPagerAdapter(
@@ -17,7 +18,7 @@ class MovieDetailViewPagerAdapter(
     override fun getItemCount(): Int = 6
 
     override fun createFragment(position: Int): Fragment{
-        val bundle = bundleOf("movie" to movie)
+        val bundle = bundleOf(Constant.PATH_MOVIE to movie)
         val fragment: Fragment = when(position){
             0 -> MovieOverviewFragment()
             1 -> CastFragment()

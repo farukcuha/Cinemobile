@@ -12,6 +12,7 @@ import com.pandorina.cinemobile.view.adapter.ProductionCountriesAdapter
 import com.pandorina.cinemobile.databinding.FragmentMovieOverviewBinding
 import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.data.model.MovieDetail
+import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.loadImage
 import com.pandorina.cinemobile.viewmodel.MovieOverviewViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,16 +24,13 @@ class MovieOverviewFragment: Fragment(R.layout.fragment_movie_overview) {
 
     private val viewModel: MovieOverviewViewModel by viewModels()
 
-    lateinit var companyAdapter: ProductionCompaniesAdapter
-    lateinit var countryAdapter: ProductionCountriesAdapter
+    private val companyAdapter = ProductionCompaniesAdapter()
+    val countryAdapter = ProductionCountriesAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentMovieOverviewBinding.bind(view)
 
-        val movie = arguments?.get("movie") as Movie
-
-        companyAdapter = ProductionCompaniesAdapter(arrayListOf())
-        countryAdapter = ProductionCountriesAdapter(arrayListOf())
+        val movie = arguments?.get(Constant.PATH_MOVIE) as Movie
 
         movie.let {
             setUpRecyclerViews()
@@ -77,8 +75,14 @@ class MovieOverviewFragment: Fragment(R.layout.fragment_movie_overview) {
         viewModel.getMovieOverview(movieId)
         viewModel.movieOverview.observe(viewLifecycleOwner, Observer {
             setContentText(it)
-            countryAdapter.updateList(it.production_countries)
-            companyAdapter.updateList(it.production_companies)
+            countryAdapter.apply {
+                list = it.production_countries
+                notifyDataSetChanged()
+            }
+            companyAdapter.apply {
+                list = it.production_companies
+                notifyDataSetChanged()
+            }
         })
     }
 

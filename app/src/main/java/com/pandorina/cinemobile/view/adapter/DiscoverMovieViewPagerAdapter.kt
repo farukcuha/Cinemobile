@@ -5,14 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.Util
 import com.pandorina.cinemobile.util.loadImage
 import com.pandorina.cinemobile.view.fragment.movie.MoviesFragmentDirections
 
@@ -47,10 +44,6 @@ class DiscoverMovieViewPagerAdapter(private val list: ArrayList<Movie>) : Recycl
                 holder.itemView.findNavController().navigate(action)
             })
         }
-
-
-
-
     }
 
     override fun getItemCount(): Int = if (isLoaded == true) list.size else 1

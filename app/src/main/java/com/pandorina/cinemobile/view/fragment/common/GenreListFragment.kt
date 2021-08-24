@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
-    var _binding: FragmentGenreListBinding? = null
+    private var _binding: FragmentGenreListBinding? = null
     val binding get() = _binding!!
 
     private val viewModel by viewModels<GenresListViewModel>()
@@ -25,7 +25,7 @@ class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentGenreListBinding.bind(view)
-        activity?.let { setActionBarText(it, "Genres") }
+        activity?.let { setActionBarText(it, getString(R.string.genres)) }
 
         mAdapter = GenreListAdapter(listOf())
         setUpRecyclerView()
@@ -41,7 +41,7 @@ class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
     }
 
     private fun getData() {
-        viewModel.getGenres(Constant.STRING_MOVIE)
+        viewModel.getGenres(Constant.PATH_MOVIE)
         viewModel.genreResponse.observe(viewLifecycleOwner){ response ->
             when(response){
                 is NetworkResult.Success -> {
@@ -56,7 +56,7 @@ class GenreListFragment : Fragment(R.layout.fragment_genre_list) {
 
                 }
                 is NetworkResult.Error -> {
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                 }
             }
         }

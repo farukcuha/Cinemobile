@@ -39,7 +39,11 @@ class MovieDetailFragment: Fragment(R.layout.fragment_movie_detail) {
         val adapter = MovieDetailViewPagerAdapter(childFragmentManager, lifecycle, movie)
         viewPager.adapter = adapter
 
-        val list = arrayOf("Overview", "Cast", "Collection", "Similar", "Videos", "Images")
+        val list = arrayOf(
+            getString(R.string.overview), getString(R.string.cast),
+            getString(R.string.collection), getString(R.string.similar),
+            getString(R.string.videos), getString(R.string.image)
+        )
 
         TabLayoutMediator(tabLayout, viewPager){ tab, position ->
             tab.text = list[position]

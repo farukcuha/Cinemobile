@@ -26,21 +26,23 @@ class Repository @Inject constructor(
 
     suspend fun getUpcomingMovies() = remoteDataSource.getUpcomingMovies()
 
+    fun getSearchMovies(query: String) = remoteDataSource.getSearchMovies(query)
+
     suspend fun getMovieDetail(movieId: Int) = remoteDataSource.getMovieDetail(movieId)
 
     suspend fun getCast(id: Int, productionType: String) = remoteDataSource.getCast(id, productionType)
 
-    suspend fun getGenres(productionType: String) = flow<NetworkResult<GenreResponse>>{
-        emit(safeApiCall { remoteDataSource.getGenres(productionType) })
-    }.flowOn(Dispatchers.Main)
+    suspend fun getGenres(productionType: String) = remoteDataSource.getGenres(productionType)
 
-    fun getMoviesByGenres(genreId: Int) = remoteDataSource.getMoviesByGenres(genreId).flow
+    fun getMoviesByGenres(genreId: Int) = remoteDataSource.getMoviesByGenres(genreId)
 
-    fun getMorePopularMovies() = remoteDataSource.getMorePopularMovies().flow
+    fun getMorePopularMovies() = remoteDataSource.getMorePopularMovies()
 
-    fun getMoreTopRatedMovies() = remoteDataSource.getMoreTopRatedMovies().flow
+    fun getMoreTopRatedMovies() = remoteDataSource.getMoreTopRatedMovies()
 
-    fun getMoreNowPlayingMovies() = remoteDataSource.getMoreNowPlayingMovies().flow
+    fun getMoreNowPlayingMovies() = remoteDataSource.getMoreNowPlayingMovies()
 
-    fun getMoreUpcomingMovies() = remoteDataSource.getMoreUpcomingMovies().flow
+    fun getMoreUpcomingMovies() = remoteDataSource.getMoreUpcomingMovies()
+
+
 }

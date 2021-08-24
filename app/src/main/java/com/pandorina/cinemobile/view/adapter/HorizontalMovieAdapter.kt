@@ -52,7 +52,6 @@ class HorizontalMovieAdapter(private val list: ArrayList<Movie>): RecyclerView.A
         }
     }
 
-
     override fun getItemCount(): Int = if (isLoaded == true) list.size else 10
 
     override fun getItemViewType(position: Int): Int = if (isLoaded == true){ Constant.ITEM_TYPE_MOVIE } else { Constant.ITEM_TYPE_SHIMMER }

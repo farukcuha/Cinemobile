@@ -10,11 +10,10 @@ import com.pandorina.cinemobile.data.model.Credit
 import com.pandorina.cinemobile.util.loadImage
 
 class CastAdapter(var list: ArrayList<Credit>): RecyclerView.Adapter<CastAdapter.Holder>() {
-
     class Holder(private val binding: ItemCastBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Credit){
             binding.apply {
-                imageViewCastImage.loadImage(item.profile_path_url, true)
+                imageViewCastImage.loadImage(item.profile_path_url)
                 textViewCastRealName.text = item.name
                 textViewCastCharacterName.text = item.character
             }

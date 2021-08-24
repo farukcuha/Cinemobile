@@ -8,7 +8,8 @@ import com.pandorina.cinemobile.databinding.ItemProductionCompaniesBinding
 import com.pandorina.cinemobile.data.model.Company
 import com.pandorina.cinemobile.util.loadImage
 
-class ProductionCompaniesAdapter(val list: ArrayList<Company>): RecyclerView.Adapter<ProductionCompaniesAdapter.Holder>(){
+class ProductionCompaniesAdapter: RecyclerView.Adapter<ProductionCompaniesAdapter.Holder>(){
+    var list = listOf<Company>()
     class Holder(val binding: ItemProductionCompaniesBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Company){
             binding.imageViewProductionCompanyImage.loadImage(item.logo_path_url)
@@ -27,10 +28,4 @@ class ProductionCompaniesAdapter(val list: ArrayList<Company>): RecyclerView.Ada
     }
 
     override fun getItemCount(): Int = list.size
-
-    fun updateList(updatedList: List<Company>){
-        list.clear()
-        list.addAll(updatedList)
-        notifyDataSetChanged()
-    }
 }

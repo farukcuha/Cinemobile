@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cinemobile</string>
+    <string name="language">tr-TR</string>
+    <string name="movies">Filmler</string>
+    <string name="series">Diziler</string>
+    <string name="search">Ara</string>
+    <string name="favorite">Favori</string>
+    <string name="popular">Popüler</string>
+    <string name="top_rated">En Çok Oy Alan</string>
+    <string name="now_playing">Vizyonda</string>
+    <string name="upcoming">Yaklaşan</string>
+    <string name="settings">Ayarlar</string>
+    <string name="view_all">Hepsini Görüntüle</string>
+    <string name="home">Anasayfa</string>
+    <string name="overview">Özet</string>
+    <string name="production_companies">Yapımcı Şirketler</string>
+    <string name="production_countries">Yapımcı Ülkeler</string>
+    <string name="minute">dk</string>
+    <string name="genres">Türler</string>
+    <string name="cast">Oyuncular</string>
+    <string name="collection">Seri</string>
+    <string name="similar">Benzer</string>
+    <string name="videos">Video</string>
+    <string name="image">Resim</string>
+    <string name="search_movie">Film Ara…</string>
+    <string name="hello_blank_fragment">Merhaba Dünya</string>
+</resources>

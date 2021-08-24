@@ -9,6 +9,7 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.CastAdapter
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.viewmodel.CastViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,7 @@ class CastFragment: Fragment(R.layout.fragment_cast){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentCastBinding.bind(view)
 
-        val movie = arguments?.get("movie") as Movie
+        val movie = arguments?.get(Constant.PATH_MOVIE) as Movie
 
         movie.let {
             setUpRecyclerView()
@@ -43,7 +44,7 @@ class CastFragment: Fragment(R.layout.fragment_cast){
     }
 
     private fun getData(movieId: Int){
-        viewModel.getCast(movieId, "movie")
+        viewModel.getCast(movieId, Constant.PATH_MOVIE)
         viewModel.castList.observe(viewLifecycleOwner, Observer {
             castAdapter.update(it.cast)
         })

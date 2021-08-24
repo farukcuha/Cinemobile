@@ -15,7 +15,6 @@ class MoviesByGenresAdapter: PagingDataAdapter<Movie, VerticalMovieItemHolder>(C
         val item = getItem(position)
         item?.let {
             holder.bind(item)
-
             holder.itemView.setOnClickListener{
                 val action = MoviesByGenresFragmentDirections.actionMoviesByGenresFragmentToNavMovieDetail(item)
                 holder.itemView.findNavController().navigate(action)

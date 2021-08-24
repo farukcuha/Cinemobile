@@ -4,7 +4,11 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pandorina.cinemobile.data.resource.remote.TMDBApi
 import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Constant.DEFAULT_STARTING_PAGE_INDEX
+import retrofit2.HttpException
+import java.io.IOException
+
 class MoreMoviesPagingSource(
     private val api: TMDBApi,
     private var type: String
@@ -20,17 +24,19 @@ class MoreMoviesPagingSource(
                 prevKey = if (position == DEFAULT_STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = if (results.isEmpty()) null else position + 1
             )
-        } catch (e: Exception) {
+        } catch (e: IOException) {
+            LoadResult.Error(e)
+        } catch (e: HttpException){
             LoadResult.Error(e)
         }
     }
 
     private suspend fun getResponseByType(position: Int): ArrayList<Movie> =
             when(type){
-                "Popular" -> api.getPopularMovies(position).body()!!.results
-                "Top Rated" -> api.getTopRatedMovies(position).body()!!.results
-                "Now Playing" -> api.getNowPlayingMovies(position).body()!!.results
-                "Upcoming" -> api.getUpcomingMovies(position).body()!!.results
+                Constant.PATH_POPULAR -> api.getPopularMovies(position).body()!!.results
+                Constant.PATH_TOP_RATED -> api.getTopRatedMovies(position).body()!!.results
+                Constant.PATH_NOW_PLAYING -> api.getNowPlayingMovies(position).body()!!.results
+                Constant.PATH_UPCOMING -> api.getUpcomingMovies(position).body()!!.results
                 else -> arrayListOf()
             }
 
