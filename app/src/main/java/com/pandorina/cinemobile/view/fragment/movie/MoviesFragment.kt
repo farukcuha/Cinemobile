@@ -71,19 +71,19 @@ class MoviesFragment: Fragment(R.layout.fragment_movies) {
 
     private fun onClickViewAll() {
         binding.apply {
-            textViewViewAllPopularMovies.root.setOnClickListener(View.OnClickListener {
+            buttonViewAllPopularMovies.root.setOnClickListener(View.OnClickListener {
                 navigate(getString(R.string.popular))
             })
 
-            textViewViewAllTopRatedMovies.root.setOnClickListener(View.OnClickListener {
+            buttonViewViewAllTopRatedMovies.root.setOnClickListener(View.OnClickListener {
                 navigate(getString(R.string.top_rated))
             })
 
-            textViewViewAllNowPlayingMovies.root.setOnClickListener(View.OnClickListener {
+            buttonViewAllNowPlayingMovies.root.setOnClickListener(View.OnClickListener {
                 navigate(getString(R.string.now_playing))
             })
 
-            textViewViewAllUpcomingMovies.root.setOnClickListener(View.OnClickListener {
+            buttonViewAllUpcomingMovies.root.setOnClickListener(View.OnClickListener {
                 navigate(getString(R.string.upcoming))
             })
         }

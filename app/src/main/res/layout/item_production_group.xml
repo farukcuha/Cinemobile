@@ -22,7 +22,7 @@
 
         <include
             android:id="@+id/text_view_view_all_popular_movies"
-            layout="@layout/text_view_view_all"
+            layout="@layout/button_view_more"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.8" />

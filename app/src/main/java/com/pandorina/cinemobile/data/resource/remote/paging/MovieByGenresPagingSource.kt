@@ -1,14 +1,14 @@
-package com.pandorina.cinemobile.data.resource.paging
+package com.pandorina.cinemobile.data.resource.remote.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.pandorina.cinemobile.data.resource.remote.TMDBApi
+import com.pandorina.cinemobile.data.resource.remote.service.TMDBApi
 import com.pandorina.cinemobile.data.model.Movie
 import com.pandorina.cinemobile.util.Constant
 
 class MovieByGenresPagingSource(
-    private val api: TMDBApi,
-    private var genreId: Int
+        private val api: TMDBApi,
+        private var genreId: Int
 ) : PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {

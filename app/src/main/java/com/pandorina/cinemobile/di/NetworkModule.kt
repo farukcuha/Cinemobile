@@ -1,10 +1,14 @@
 package com.pandorina.cinemobile.di
 
+import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.data.Repository
+import com.pandorina.cinemobile.data.resource.local.LocalDataSource
+import com.pandorina.cinemobile.data.resource.local.dao.MovieQueryDAO
+import com.pandorina.cinemobile.data.resource.local.database.MovieQueryDatabase
 import com.pandorina.cinemobile.data.resource.remote.RemoteDataSource
-import com.pandorina.cinemobile.data.resource.remote.TMDBApi
+import com.pandorina.cinemobile.data.resource.remote.service.TMDBApi
 import com.pandorina.cinemobile.util.Constant
 import dagger.Module
 import dagger.Provides
@@ -19,7 +23,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(@ApplicationContext context: Context): Retrofit {
@@ -51,7 +55,5 @@ object AppModule {
     @Singleton
     fun provideRemoteDataSource(api: TMDBApi): RemoteDataSource = RemoteDataSource(api)
 
-    @Provides
-    @Singleton
-    fun provideRepo(remoteDataSource: RemoteDataSource): Repository = Repository(remoteDataSource)
+
 }

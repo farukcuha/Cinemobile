@@ -36,6 +36,8 @@
         android:layout_height="wrap_content"
         tools:text="Uzman Çavuş Bekir Özbey"
         android:fontFamily="@font/montserrat_medium"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="2"/>
 
 </LinearLayout>

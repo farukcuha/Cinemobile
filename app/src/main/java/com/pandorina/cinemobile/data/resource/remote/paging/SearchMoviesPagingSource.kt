@@ -1,9 +1,9 @@
-package com.pandorina.cinemobile.data.resource.paging
+package com.pandorina.cinemobile.data.resource.remote.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pandorina.cinemobile.data.model.Movie
-import com.pandorina.cinemobile.data.resource.remote.TMDBApi
+import com.pandorina.cinemobile.data.resource.remote.service.TMDBApi
 import com.pandorina.cinemobile.util.Constant
 import retrofit2.HttpException
 import java.io.IOException

@@ -33,16 +33,13 @@
                 <include
                     android:id="@+id/text_view_header_popular_movies"
                     layout="@layout/text_view_header_1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/text_view_view_all_popular_movies"
-                    layout="@layout/text_view_view_all"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8" />
+                    android:id="@+id/button_view_all_popular_movies"
+                    layout="@layout/button_view_more" />
 
             </LinearLayout>
 
@@ -63,16 +60,14 @@
                 <include
                     android:id="@+id/text_view_header_top_rated_movies"
                     layout="@layout/text_view_header_1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/text_view_view_all_top_rated_movies"
-                    layout="@layout/text_view_view_all"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8" />
+                    android:id="@+id/button_view_view_all_top_rated_movies"
+                    layout="@layout/button_view_more"
+                    />
 
             </LinearLayout>
 
@@ -93,16 +88,14 @@
                 <include
                     android:id="@+id/text_view_header_now_playing_movies"
                     layout="@layout/text_view_header_1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/text_view_view_all_now_playing_movies"
-                    layout="@layout/text_view_view_all"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8" />
+                    android:id="@+id/button_view_all_now_playing_movies"
+                    layout="@layout/button_view_more"
+                     />
 
             </LinearLayout>
 
@@ -123,16 +116,15 @@
                 <include
                     android:id="@+id/text_view_header_upcoming_movies"
                     layout="@layout/text_view_header_1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/text_view_view_all_upcoming_movies"
-                    layout="@layout/text_view_view_all"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8" />
+                    android:id="@+id/button_view_all_upcoming_movies"
+                    layout="@layout/button_view_more"
+
+                    />
 
             </LinearLayout>
 

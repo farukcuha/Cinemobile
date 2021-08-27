@@ -3,8 +3,11 @@ package com.pandorina.cinemobile.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.pandorina.cinemobile.data.model.GenreResponse
-import com.pandorina.cinemobile.data.resource.paging.MoreMoviesPagingSource
-import com.pandorina.cinemobile.data.resource.paging.MovieByGenresPagingSource
+import com.pandorina.cinemobile.data.model.MovieQuery
+import com.pandorina.cinemobile.data.resource.local.LocalDataSource
+import com.pandorina.cinemobile.data.resource.local.dao.MovieQueryDAO
+import com.pandorina.cinemobile.data.resource.remote.paging.MoreMoviesPagingSource
+import com.pandorina.cinemobile.data.resource.remote.paging.MovieByGenresPagingSource
 import com.pandorina.cinemobile.data.resource.remote.RemoteDataSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +17,9 @@ import javax.inject.Inject
 
 @ActivityRetainedScoped
 class Repository @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
-    ): ApiResponse() {
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource): ApiResponse() {
+
     suspend fun getDiscoverMovies() = remoteDataSource.getDiscoverMovies()
 
     suspend fun getPopularMovies() = remoteDataSource.getPopularMovies()
@@ -27,6 +31,14 @@ class Repository @Inject constructor(
     suspend fun getUpcomingMovies() = remoteDataSource.getUpcomingMovies()
 
     fun getSearchMovies(query: String) = remoteDataSource.getSearchMovies(query)
+
+
+    suspend fun insertMovieQuery(query: MovieQuery) = localDataSource.insertMovieQuery(query)
+
+    suspend fun clearMovieQueries() = localDataSource.clearMovieQueries()
+
+    fun getMovieQueries() = localDataSource.getMovieQueries()
+
 
     suspend fun getMovieDetail(movieId: Int) = remoteDataSource.getMovieDetail(movieId)
 

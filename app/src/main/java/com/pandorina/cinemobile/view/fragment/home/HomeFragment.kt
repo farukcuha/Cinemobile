@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.pandorina.cinemobile.R
 
-// TODO: Rename parameter arguments, choose names that match
-
 class HomeFragment : Fragment() {
 
     override fun onCreateView(

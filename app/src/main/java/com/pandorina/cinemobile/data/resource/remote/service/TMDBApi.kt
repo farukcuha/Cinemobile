@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile.data.resource.remote
+package com.pandorina.cinemobile.data.resource.remote.service
 
 import androidx.lifecycle.LiveData
 import com.pandorina.cinemobile.data.model.CreditResponse

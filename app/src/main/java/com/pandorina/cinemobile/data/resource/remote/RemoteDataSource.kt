@@ -6,15 +6,18 @@ import androidx.paging.liveData
 import com.pandorina.cinemobile.data.ApiResponse
 import com.pandorina.cinemobile.data.NetworkResult
 import com.pandorina.cinemobile.data.model.GenreResponse
-import com.pandorina.cinemobile.data.resource.paging.MoreMoviesPagingSource
-import com.pandorina.cinemobile.data.resource.paging.MovieByGenresPagingSource
-import com.pandorina.cinemobile.data.resource.paging.SearchMoviesPagingSource
+import com.pandorina.cinemobile.data.resource.remote.paging.MoreMoviesPagingSource
+import com.pandorina.cinemobile.data.resource.remote.paging.MovieByGenresPagingSource
+import com.pandorina.cinemobile.data.resource.remote.paging.SearchMoviesPagingSource
+import com.pandorina.cinemobile.data.resource.remote.service.TMDBApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import com.pandorina.cinemobile.util.Constant
 class RemoteDataSource @Inject constructor(val api: TMDBApi): ApiResponse(){
+
+
     suspend fun getDiscoverMovies() = api.getDiscoverMovies(1)
 
     suspend fun getPopularMovies() = api.getPopularMovies(1)

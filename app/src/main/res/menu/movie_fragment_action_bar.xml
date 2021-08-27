@@ -5,10 +5,10 @@
         android:id="@+id/action_search"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_search"
-        android:title="Search Movie" />
+        android:title="@string/search_movie" />
     <item
         android:id="@+id/action_genres"
-        android:title="Genres"
+        android:title="@string/genres"
         app:showAsAction="ifRoom"
         />
 </menu>
