@@ -30,7 +30,7 @@
                 android:id="@+id/recycler_view_last_searched_movies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_search_query_item"
+                tools:listitem="@layout/item_searched_query"
                 android:overScrollMode="never"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

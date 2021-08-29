@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.CastAdapter
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
-import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.viewmodel.CastViewModel
 import dagger.hilt.android.AndroidEntryPoint

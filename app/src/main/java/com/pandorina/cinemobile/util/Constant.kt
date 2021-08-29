@@ -5,6 +5,7 @@ object Constant {
     const val IMAGE_URL_HIGH = "https://image.tmdb.org/t/p/original"
     const val API_KEY = "a36db502bbff1387747cd6d7a0ed6226"
     const val API_URL = "https://api.themoviedb.org/3/"
+    const val WEB_URL = "https://www.themoviedb.org/movie/"
     const val ITEM_TYPE_SHIMMER = 0
     const val ITEM_TYPE_MOVIE = 1
 

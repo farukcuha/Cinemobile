@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.pandorina.cinemobile.databinding.ItemVerticalListBinding
-import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.view.fragment.movie.MoviesByGenresFragmentDirections
 import com.pandorina.cinemobile.view.holder.VerticalMovieItemHolder
 

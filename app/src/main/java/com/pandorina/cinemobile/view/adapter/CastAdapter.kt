@@ -6,26 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.databinding.ItemCastBinding
-import com.pandorina.cinemobile.data.model.Credit
+import com.pandorina.cinemobile.data.remote.model.Credit
 import com.pandorina.cinemobile.util.loadImage
+import com.pandorina.cinemobile.view.holder.CastHolder
 
-class CastAdapter(var list: ArrayList<Credit>): RecyclerView.Adapter<CastAdapter.Holder>() {
-    class Holder(private val binding: ItemCastBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Credit){
-            binding.apply {
-                imageViewCastImage.loadImage(item.profile_path_url)
-                textViewCastRealName.text = item.name
-                textViewCastCharacterName.text = item.character
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+class CastAdapter(var list: ArrayList<Credit>): RecyclerView.Adapter<CastHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastHolder {
         val binding = ItemCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding)
+        return CastHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
+    override fun onBindViewHolder(holder: CastHolder, position: Int) {
         val item = list[position]
         holder.bind(item)
     }

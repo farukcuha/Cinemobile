@@ -8,10 +8,11 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.data.model.Movie
+import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.loadImage
 import com.pandorina.cinemobile.view.fragment.movie.MoviesFragmentDirections
+import com.pandorina.cinemobile.view.holder.ShimmerHolder
 
 class DiscoverMovieViewPagerAdapter(private val list: ArrayList<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var isLoaded: Boolean? = false
@@ -20,8 +21,6 @@ class DiscoverMovieViewPagerAdapter(private val list: ArrayList<Movie>) : Recycl
         val image: ImageView = itemView.findViewById(R.id.image_view_view_pager_item_image)
         val title: TextView = itemView.findViewById(R.id.text_view_view_pager_item_text)
     }
-
-    class ShimmerHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (isLoaded == true) {

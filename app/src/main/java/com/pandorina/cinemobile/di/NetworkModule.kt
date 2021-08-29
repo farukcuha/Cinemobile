@@ -1,14 +1,9 @@
 package com.pandorina.cinemobile.di
 
-import android.app.Application
 import android.content.Context
-import androidx.room.Room
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.data.resource.local.LocalDataSource
-import com.pandorina.cinemobile.data.resource.local.dao.MovieQueryDAO
-import com.pandorina.cinemobile.data.resource.local.database.MovieQueryDatabase
-import com.pandorina.cinemobile.data.resource.remote.RemoteDataSource
-import com.pandorina.cinemobile.data.resource.remote.service.TMDBApi
+import com.pandorina.cinemobile.data.remote.RemoteDataSource
+import com.pandorina.cinemobile.data.remote.service.TMDBApi
 import com.pandorina.cinemobile.util.Constant
 import dagger.Module
 import dagger.Provides
@@ -54,6 +49,4 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRemoteDataSource(api: TMDBApi): RemoteDataSource = RemoteDataSource(api)
-
-
 }

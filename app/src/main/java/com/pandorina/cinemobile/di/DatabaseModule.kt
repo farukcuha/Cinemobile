@@ -2,10 +2,9 @@ package com.pandorina.cinemobile.di
 
 import android.app.Application
 import androidx.room.Room
-import com.pandorina.cinemobile.ApplicationComponent
-import com.pandorina.cinemobile.data.resource.local.LocalDataSource
-import com.pandorina.cinemobile.data.resource.local.dao.MovieQueryDAO
-import com.pandorina.cinemobile.data.resource.local.database.MovieQueryDatabase
+import com.pandorina.cinemobile.data.local.LocalDataSource
+import com.pandorina.cinemobile.data.local.dao.CinemobileDao
+import com.pandorina.cinemobile.data.local.database.MovieQueryDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +19,7 @@ object DatabaseModule {
     fun provideMovieQueryDatabase(app: Application
     ) = Room.databaseBuilder(app,
         MovieQueryDatabase::class.java,
-        "movie_search_query_table.db")
+        "cinemobile.db")
         .fallbackToDestructiveMigration()
         .build()
 
@@ -29,5 +28,5 @@ object DatabaseModule {
     fun provideMovieQueryDao(database: MovieQueryDatabase) = database.dao()
 
     @Provides
-    fun provideLocalDataSource(dao: MovieQueryDAO) = LocalDataSource(dao)
+    fun provideLocalDataSource(dao: CinemobileDao) = LocalDataSource(dao)
 }

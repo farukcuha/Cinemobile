@@ -1,7 +1,11 @@
 package com.pandorina.cinemobile.view.fragment.movie
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -10,8 +14,8 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.ProductionCompaniesAdapter
 import com.pandorina.cinemobile.view.adapter.ProductionCountriesAdapter
 import com.pandorina.cinemobile.databinding.FragmentMovieOverviewBinding
-import com.pandorina.cinemobile.data.model.Movie
-import com.pandorina.cinemobile.data.model.MovieDetail
+import com.pandorina.cinemobile.data.remote.model.Movie
+import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.loadImage
 import com.pandorina.cinemobile.viewmodel.MovieOverviewViewModel

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
 import com.pandorina.cinemobile.databinding.ItemProductionCompaniesBinding
-import com.pandorina.cinemobile.data.model.Company
+import com.pandorina.cinemobile.data.remote.model.Company
 import com.pandorina.cinemobile.util.loadImage
 
 class ProductionCompaniesAdapter: RecyclerView.Adapter<ProductionCompaniesAdapter.Holder>(){

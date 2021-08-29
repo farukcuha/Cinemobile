@@ -6,23 +6,19 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.databinding.ItemGenreBinding
-import com.pandorina.cinemobile.data.model.Genre
+import com.pandorina.cinemobile.data.remote.model.Genre
 import com.pandorina.cinemobile.view.fragment.common.GenreListFragmentDirections
+import com.pandorina.cinemobile.view.holder.GenreHolder
 
 
-class GenreListAdapter(var list: List<Genre>): RecyclerView.Adapter<GenreListAdapter.Holder>() {
-    class Holder(val binding: ItemGenreBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Genre){
-            binding.root.text = item.name
-        }
-    }
+class GenreListAdapter(var list: List<Genre>): RecyclerView.Adapter<GenreHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreHolder {
         val binding = ItemGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding)
+        return GenreHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
+    override fun onBindViewHolder(holder: GenreHolder, position: Int) {
         val item = list[position]
         holder.bind(item)
 
@@ -33,7 +29,4 @@ class GenreListAdapter(var list: List<Genre>): RecyclerView.Adapter<GenreListAda
     }
 
     override fun getItemCount(): Int = list.size
-
-
-
 }

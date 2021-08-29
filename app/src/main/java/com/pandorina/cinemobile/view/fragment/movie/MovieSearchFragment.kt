@@ -1,26 +1,16 @@
 package com.pandorina.cinemobile.view.fragment.movie
 
-import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.activity.OnBackPressedCallback
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.data.model.MovieQuery
+import com.pandorina.cinemobile.data.local.model.MovieQuery
 import com.pandorina.cinemobile.databinding.FragmentMovieSearchBinding
 import com.pandorina.cinemobile.view.adapter.SearchMoviesAdapter
 import com.pandorina.cinemobile.viewmodel.SearchMoviesViewModel
@@ -28,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.pandorina.cinemobile.util.Util
 import com.pandorina.cinemobile.view.adapter.MovieQueryAdapter
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
