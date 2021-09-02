@@ -3,10 +3,9 @@ package com.pandorina.cinemobile.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.transition.Hold
 import com.pandorina.cinemobile.databinding.ItemProductionCompaniesBinding
 import com.pandorina.cinemobile.data.remote.model.Company
-import com.pandorina.cinemobile.util.loadImage
+import com.pandorina.cinemobile.util.Util.loadImage
 
 class ProductionCompaniesAdapter: RecyclerView.Adapter<ProductionCompaniesAdapter.Holder>(){
     var list = listOf<Company>()

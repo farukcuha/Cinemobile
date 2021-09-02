@@ -1,5 +1,6 @@
 package com.pandorina.cinemobile.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.local.model.MovieQuery
@@ -14,7 +15,7 @@ interface CinemobileDao {
     suspend fun clearMovieQueries()
 
     @Query("SELECT * FROM MOVIE_SEARCH_QUERY_TABLE ORDER BY query_time DESC")
-    fun getMovieQueries(): Flow<List<MovieQuery>>
+    fun getMovieQueries(): LiveData<List<MovieQuery>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavoriteMovie(vararg movie: FavoriteMovie)

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.databinding.ItemVerticalListBinding
 import com.pandorina.cinemobile.view.fragment.movie.MovieSearchFragmentDirections
@@ -29,6 +30,8 @@ class SearchMoviesAdapter: PagingDataAdapter<Movie, VerticalMovieItemHolder>(Com
         val binding = ItemVerticalListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return VerticalMovieItemHolder(binding)
     }
+
+
 
     object Comparator: DiffUtil.ItemCallback<Movie>(){
         override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {

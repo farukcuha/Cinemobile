@@ -33,8 +33,11 @@ class RemoteDataSource @Inject constructor(val api: TMDBApi): ApiResponse(){
     }.liveData
 
     suspend fun getMovieDetail(movieId: Int) = api.getMovieDetail(movieId)
-
     suspend fun getCast(id: Int, productionType: String) = api.getCast(productionType, id)
+    suspend fun getMovieCollection(collectionId: Int) = api.getMovieCollection(collectionId)
+    suspend fun getSimilarMovies(movieId: Int?) = api.getSimilarMovies(movieId)
+    suspend fun getMovieVideos(movieId: Int) = api.getMovieVideos(movieId)
+    suspend fun getMovieImages(movieId: Int) = api.getMovieImages(movieId, "en")
 
     suspend fun getGenres(productionType: String) =  flow<NetworkResult<GenreResponse>>{
         emit(safeApiCall { api.getGenres(productionType) })

@@ -4,7 +4,7 @@ import android.view.animation.OvershootInterpolator
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.databinding.ItemVerticalListBinding
 import com.pandorina.cinemobile.data.remote.model.Movie
-import com.pandorina.cinemobile.util.loadImage
+import com.pandorina.cinemobile.util.Util.loadImage
 
 class VerticalMovieItemHolder(private val binding: ItemVerticalListBinding): RecyclerView.ViewHolder(binding.root){
     fun bind(item: Movie){

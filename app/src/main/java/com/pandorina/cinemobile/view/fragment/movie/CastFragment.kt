@@ -9,6 +9,7 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.CastAdapter
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.data.remote.model.Movie
+import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.viewmodel.CastViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,15 +21,16 @@ class CastFragment: Fragment(R.layout.fragment_cast){
 
     private val castAdapter = CastAdapter(arrayListOf())
     private val viewModel: CastViewModel by viewModels()
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentCastBinding.bind(view)
 
-        val movie = arguments?.get(Constant.PATH_MOVIE) as Movie
-
-        movie.let {
+        (arguments?.get("arg_movie_detail") as MovieDetail).id?.let {
             setUpRecyclerView()
-            getData(it.id)
+            getData(it)
         }
+
     }
 
     override fun onResume() {

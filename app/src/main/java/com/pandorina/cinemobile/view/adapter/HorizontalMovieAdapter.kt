@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.Util
-import com.pandorina.cinemobile.util.loadImage
+import com.pandorina.cinemobile.util.Util.loadImage
 import com.pandorina.cinemobile.view.fragment.movie.MoviesFragmentDirections
 import com.pandorina.cinemobile.view.holder.ShimmerHolder
 

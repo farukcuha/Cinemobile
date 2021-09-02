@@ -1,10 +1,8 @@
 package com.pandorina.cinemobile.data.remote.service
 
 import androidx.lifecycle.LiveData
-import com.pandorina.cinemobile.data.remote.model.CreditResponse
-import com.pandorina.cinemobile.data.remote.model.GenreResponse
-import com.pandorina.cinemobile.data.remote.model.MovieDetail
-import com.pandorina.cinemobile.data.remote.model.MovieResponse
+import com.pandorina.cinemobile.data.remote.model.*
+import com.pandorina.cinemobile.data.remote.model.Collection
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -63,6 +61,28 @@ interface TMDBApi {
         @Query("with_genres") with_genres: Int,
         @Query("page") page: Int
     ): Response<MovieResponse>
+
+    @GET("collection/{collection_id}")
+    suspend fun getMovieCollection(
+            @Path("collection_id") collectionId: Int
+    ): Response<Collection>
+
+    @GET("movie/{movie_id}/similar")
+    suspend fun getSimilarMovies(
+            @Path("movie_id") movieId: Int?
+    ): Response<MovieResponse>
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieVideos(
+            @Path("movie_id") movieId: Int
+    ): Response<VideoResponse>
+
+    @GET("movie/{movie_id}/images")
+    suspend fun getMovieImages(
+            @Path("movie_id") movieId: Int,
+            @Query("include_image_language") imageLanguage: String
+    ): Response<ImageResponse>
+
 
     /*@GET("/movie/{movie_id}/similar")
     fun getSimilarMovies(

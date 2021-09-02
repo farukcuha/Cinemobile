@@ -1,11 +1,7 @@
 package com.pandorina.cinemobile.view.fragment.movie
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,11 +10,9 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.view.adapter.ProductionCompaniesAdapter
 import com.pandorina.cinemobile.view.adapter.ProductionCountriesAdapter
 import com.pandorina.cinemobile.databinding.FragmentMovieOverviewBinding
-import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.loadImage
-import com.pandorina.cinemobile.viewmodel.MovieOverviewViewModel
+import com.pandorina.cinemobile.util.Util.loadImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,19 +20,18 @@ class MovieOverviewFragment: Fragment(R.layout.fragment_movie_overview) {
     private var _binding: FragmentMovieOverviewBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieOverviewViewModel by viewModels()
-
     private val companyAdapter = ProductionCompaniesAdapter()
-    val countryAdapter = ProductionCountriesAdapter()
+    private val countryAdapter = ProductionCountriesAdapter()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentMovieOverviewBinding.bind(view)
 
-        val movie = arguments?.get(Constant.PATH_MOVIE) as Movie
+        val movieDetail = arguments?.get("arg_movie_detail") as MovieDetail
 
-        movie.let {
-            setUpRecyclerViews()
-            getMovieOverviewData(it.id)
+        with(movieDetail){
+            setUpRecyclerViews(movieDetail)
+            setContentText(movieDetail)
         }
     }
 
@@ -47,15 +40,23 @@ class MovieOverviewFragment: Fragment(R.layout.fragment_movie_overview) {
         binding.root.requestLayout()
     }
 
-    private fun setUpRecyclerViews() {
+    private fun setUpRecyclerViews(movieDetail: MovieDetail) {
         binding.apply {
             recyclerViewMovieOverviewProductionCompanies.apply {
                 setHasFixedSize(true)
-                adapter = companyAdapter
+                adapter = companyAdapter.also { adapter ->
+                    movieDetail.production_companies?.let {
+                        adapter.list = it
+                    }
+                }
             }
             recyclerViewMovieOverviewProductionCountries.apply {
                 setHasFixedSize(true)
-                adapter = countryAdapter
+                adapter = countryAdapter.also { adapter ->
+                    movieDetail.production_countries?.let {
+                        adapter.list = it
+                    }
+                }
             }
         }
     }
@@ -73,21 +74,6 @@ class MovieOverviewFragment: Fragment(R.layout.fragment_movie_overview) {
             textViewMovieOverviewTagline.text = "\"${movieDetail.tagline}\""
             textViewMovieOverviewArticle.root.text = movieDetail.overview
         }
-    }
-
-    private fun getMovieOverviewData(movieId: Int) {
-        viewModel.getMovieOverview(movieId)
-        viewModel.movieOverview.observe(viewLifecycleOwner, Observer {
-            setContentText(it)
-            countryAdapter.apply {
-                list = it.production_countries
-                notifyDataSetChanged()
-            }
-            companyAdapter.apply {
-                list = it.production_companies
-                notifyDataSetChanged()
-            }
-        })
     }
 
     override fun onDestroy() {

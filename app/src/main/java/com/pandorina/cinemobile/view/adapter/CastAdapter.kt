@@ -3,11 +3,8 @@ package com.pandorina.cinemobile.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.transition.Hold
-import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.databinding.ItemCastBinding
 import com.pandorina.cinemobile.data.remote.model.Credit
-import com.pandorina.cinemobile.util.loadImage
 import com.pandorina.cinemobile.view.holder.CastHolder
 
 class CastAdapter(var list: ArrayList<Credit>): RecyclerView.Adapter<CastHolder>() {

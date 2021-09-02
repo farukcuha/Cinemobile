@@ -2,6 +2,7 @@ package com.pandorina.cinemobile.view.fragment.movie
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -36,10 +37,11 @@ class MovieSearchFragment : Fragment(R.layout.fragment_movie_search), SearchView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentMovieSearchBinding.bind(view)
 
+        observePastMovieQueries()
+
         setUpRecyclerViews()
         setHasOptionsMenu(true)
         requireActivity().actionBar?.setDisplayShowTitleEnabled(false)
-        observePastMovieQueries()
 
         binding.textViewClearAllQueries.setOnClickListener {
             viewModel.clearMovieQuery()
@@ -47,17 +49,8 @@ class MovieSearchFragment : Fragment(R.layout.fragment_movie_search), SearchView
     }
 
     private fun observePastMovieQueries() {
-        lifecycleScope.launch {
-            viewModel.movieQueriesList.collect {
-                movieQueryAdapter.submitList(it)
-            }
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        context?.let {
-            Util.Keyboard(requireContext()).show()
+        viewModel.movieQueriesList.observe(viewLifecycleOwner) {
+            movieQueryAdapter.submitList(it)
         }
     }
 
@@ -82,7 +75,6 @@ class MovieSearchFragment : Fragment(R.layout.fragment_movie_search), SearchView
     override fun onPause() {
         super.onPause()
         searchView?.let { Util.Keyboard(requireContext()).hide(it.windowToken) }
-
     }
 
     override fun onResume() {

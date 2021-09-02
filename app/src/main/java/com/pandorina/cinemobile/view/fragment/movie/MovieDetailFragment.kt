@@ -1,26 +1,28 @@
 package com.pandorina.cinemobile.view.fragment.movie
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.remote.model.Movie
+import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentMovieDetailBinding
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.loadImage
-import com.pandorina.cinemobile.view.adapter.MovieDetailViewPagerAdapter
+import com.pandorina.cinemobile.util.Util.loadImage
+import com.pandorina.cinemobile.view.adapter.MovieDetailFragmentAdapter
 import com.pandorina.cinemobile.viewmodel.MovieDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import com.pandorina.cinemobile.util.Util.setActionBarText
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -32,6 +34,7 @@ class MovieDetailFragment: Fragment(R.layout.fragment_movie_detail) {
 
     private var _movie: Movie? = null
     val movie get() = _movie!!
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentMovieDetailBinding.bind(view)
 
@@ -39,12 +42,12 @@ class MovieDetailFragment: Fragment(R.layout.fragment_movie_detail) {
             _movie = it.get("movie_arg") as Movie
         }
 
-        setUpViewPager(movie)
-        (activity as AppCompatActivity).supportActionBar?.title = movie.title
+        movie.title?.let { setActionBarText(requireActivity(), it) }
         binding.imageViewMovieDetailBackdropImage.loadImage(movie.backdrop_path_url)
         viewModel.currentMovieId.value = movie.id
-        viewModel.checkFavoriteMovieIsExist()
+        setUpViewPager()
         setHasOptionsMenu(true)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -61,7 +64,7 @@ class MovieDetailFragment: Fragment(R.layout.fragment_movie_detail) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_add_favorite -> {
-                val favoriteMovie = FavoriteMovie(movie.id)
+                val favoriteMovie = FavoriteMovie(movie.id, movie.poster_path, movie.title, movie.overview, movie.release_date, movie.backdrop_path)
                 viewModel.isFavoriteMovieExist.value.apply {
                     if (this == true) {
                         viewModel.deleteFavoriteMovie(favoriteMovie)
@@ -84,20 +87,33 @@ class MovieDetailFragment: Fragment(R.layout.fragment_movie_detail) {
         return true
     }
 
-    private fun setUpViewPager(movie: Movie) {
-        val tabLayout = binding.tabLayoutMovieDetail
-        val viewPager = binding.viewPagerMovieDetail
+    private fun setUpViewPager() {
+        lifecycleScope.launch{
+            viewModel.getMovieDetail.observe(viewLifecycleOwner){
+               it?.let {
+                   val tabLayout = binding.tabLayoutMovieDetail
+                   val viewPager = binding.viewPagerMovieDetail
 
-        val adapter = MovieDetailViewPagerAdapter(childFragmentManager, lifecycle, movie)
-        viewPager.adapter = adapter
+                   val fragmentList = arrayListOf<MovieDetailFragmentModel>()
+                   fragmentList.add(MovieDetailFragmentModel(getString(R.string.overview), MovieOverviewFragment()))
+                   fragmentList.add(MovieDetailFragmentModel(getString(R.string.cast), CastFragment()))
+                   it.belongs_to_collection?.let {
+                       fragmentList.add(MovieDetailFragmentModel(getString(R.string.collection), MovieCollectionFragment()))
+                   }
+                   fragmentList.add(MovieDetailFragmentModel(getString(R.string.similar), MovieSimilarFragment()))
+                   fragmentList.add(MovieDetailFragmentModel(getString(R.string.videos), MovieVideosFragment()))
+                   fragmentList.add(MovieDetailFragmentModel(getString(R.string.image), MovieImagesFragment()))
 
-        val list = arrayOf(
-                getString(R.string.overview), getString(R.string.cast),
-                getString(R.string.collection), getString(R.string.similar),
-                getString(R.string.videos), getString(R.string.image)
-        )
-        TabLayoutMediator(tabLayout, viewPager){ tab, position ->
-            tab.text = list[position]
-        }.attach()
+                   viewPager.adapter = MovieDetailFragmentAdapter(childFragmentManager, lifecycle, fragmentList, it)
+
+                   TabLayoutMediator(tabLayout, viewPager){ tab, position ->
+                       tab.text = fragmentList[position].title
+                   }.attach()
+               }
+            }
+        }
+
     }
+
+    data class MovieDetailFragmentModel(val title: String, val fragment: Fragment)
 }

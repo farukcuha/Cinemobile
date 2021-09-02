@@ -6,6 +6,7 @@ import com.pandorina.cinemobile.data.repository.Repository
 import com.pandorina.cinemobile.data.local.model.MovieQuery
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,9 +23,7 @@ class SearchMoviesViewModel @Inject constructor(private val repository: Reposito
         searchQuery.value = query
     }
 
-    val movieQueriesList  = flow {
-        repository.getMovieQueries().collect { emit(it) }
-    }
+    val movieQueriesList  = repository.getMovieQueries()
 
     fun insertMovieQuery(query: MovieQuery) = viewModelScope.launch {
         repository.insertMovieQuery(query)

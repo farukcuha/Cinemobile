@@ -1,12 +1,15 @@
 package com.pandorina.cinemobile.data.remote.model
 
+import android.os.Parcelable
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.util.Util
+import kotlinx.parcelize.Parcelize
 
-data class Collection(val id: String,
-                      val name: String,
-                      val poster_path: String,
-                      val backdrop_path: String) {
+@Parcelize
+data class Collection(val id: Int?,
+                      val name: String?,
+                      val poster_path: String?,
+                      val backdrop_path: String?,
+                      val parts: List<Movie>?): Parcelable {
 
     val poster_path_url: String
         get() = "${Constant.IMAGE_URL_LOW}$poster_path"

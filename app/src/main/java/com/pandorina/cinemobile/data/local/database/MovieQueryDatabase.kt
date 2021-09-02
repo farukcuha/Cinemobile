@@ -6,7 +6,7 @@ import com.pandorina.cinemobile.data.local.dao.CinemobileDao
 import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.local.model.MovieQuery
 
-@Database(entities = [MovieQuery::class, FavoriteMovie::class], version = 2)
+@Database(entities = [MovieQuery::class, FavoriteMovie::class], version = 2, exportSchema = false)
 abstract class MovieQueryDatabase : RoomDatabase() {
 
     abstract fun dao(): CinemobileDao
