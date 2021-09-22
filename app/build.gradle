@@ -78,7 +78,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     // Lottie
-    implementation "com.airbnb.android:lottie:3.4.0"
+    implementation "com.airbnb.android:lottie:4.1.0"
 
     // Room
     def room_version = "2.3.0"
@@ -87,8 +87,10 @@ dependencies {
     kapt "androidx.room:room-compiler:2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
 
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    // Recycler cover flow
+    implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 
+    implementation 'com.ccy:FocusLayoutManager:1.0.2'
 
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha03"

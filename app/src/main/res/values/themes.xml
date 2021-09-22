@@ -23,13 +23,13 @@
 
     <style name="header_medium" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">24sp</item>
-        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:textColor">@color/color_1</item>
     </style>
 
     <style name="header_small" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18sp</item>
-        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:textColor">@color/color_1</item>
     </style>
 </resources>

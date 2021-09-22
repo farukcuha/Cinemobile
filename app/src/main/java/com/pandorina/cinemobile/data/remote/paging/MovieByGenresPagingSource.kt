@@ -13,7 +13,7 @@ class MovieByGenresPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val position = params.key ?: Constant.DEFAULT_STARTING_PAGE_INDEX
-            val results = services.getDiscoverMovies(genreId, position).body()!!.results
+            val results = services.getDiscoverMovies(withGenres = genreId.toString(), page = position).body()!!.results
             LoadResult.Page(
                 data = results,
                 prevKey = if (position == Constant.DEFAULT_STARTING_PAGE_INDEX) null else position - 1,

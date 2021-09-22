@@ -2,7 +2,7 @@ package com.pandorina.cinemobile.view.fragment
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.pandorina.cinemobile.data.NetworkResult
+import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.util.Constant

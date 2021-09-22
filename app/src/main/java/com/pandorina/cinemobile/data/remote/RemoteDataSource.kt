@@ -3,8 +3,6 @@ package com.pandorina.cinemobile.data.remote
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import com.pandorina.cinemobile.data.ApiResponse
-import com.pandorina.cinemobile.data.NetworkResult
 import com.pandorina.cinemobile.data.remote.paging.MoreMoviesPagingSource
 import com.pandorina.cinemobile.data.remote.paging.MovieByGenresPagingSource
 import com.pandorina.cinemobile.data.remote.paging.SearchMoviesPagingSource
@@ -14,10 +12,24 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class RemoteDataSource @Inject constructor(val api: MovieService) : ApiResponse() {
+class RemoteDataSource @Inject constructor(
+    private val api: MovieService
+) : ApiResponse() {
+    suspend fun getTrendingMovies() = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getTrendingMovies() })
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getRandomMovies(
+        page: Int, primaryReleaseYear: Int,
+        withOriginalLanguage: String, withGenres: String) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getDiscoverMovies(withGenres, page, primaryReleaseYear, withOriginalLanguage) })
+    }.flowOn(Dispatchers.IO)
+
     suspend fun getDiscoverMovies() = flow {
         emit(NetworkResult.Loading())
-        emit(safeApiCall { api.getDiscoverMovies(null, 1) })
+        emit(safeApiCall { api.getDiscoverMovies(page = 1) })
     }.flowOn(Dispatchers.IO)
 
     suspend fun getMovieGroup(movieGroup: String, page: Int) = flow {

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.data.NetworkResult
+import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.MovieResponse
 import com.pandorina.cinemobile.databinding.FragmentDiscoverBinding
 import com.pandorina.cinemobile.util.Constant

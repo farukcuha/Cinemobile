@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile.data
+package com.pandorina.cinemobile.data.remote
 
 sealed class NetworkResult<T>(
         val data: T? = null,

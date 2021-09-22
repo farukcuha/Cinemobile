@@ -1,5 +1,6 @@
 package com.pandorina.cinemobile.data.remote.service
 
+import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.*
 import com.pandorina.cinemobile.data.remote.model.Collection
 import retrofit2.Response
@@ -8,10 +9,15 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {
+    @GET("trending/movie/day")
+    suspend fun getTrendingMovies(): Response<MovieResponse>
+
     @GET("discover/movie")
     suspend fun getDiscoverMovies(
-        @Query("with_genres") withGenres: Int?,
-        @Query("page") page: Int
+        @Query("with_genres") withGenres: String? = null,
+        @Query("page") page: Int,
+        @Query("primary_release_year") primaryReleaseYear: Int? = null,
+        @Query("with_original_language") withOriginalLanguage: String? = null,
     ): Response<MovieResponse>
 
     @GET("movie/{movie_group}")
@@ -57,6 +63,4 @@ interface MovieService {
         @Path("production_type") type: String,
         @Path("id") movieId: Int?
     ): Response<VideoResponse>
-
-
 }

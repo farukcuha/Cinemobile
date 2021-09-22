@@ -1,6 +1,6 @@
 package com.pandorina.cinemobile.data.repository
 
-import com.pandorina.cinemobile.data.ApiResponse
+import com.pandorina.cinemobile.data.remote.ApiResponse
 import com.pandorina.cinemobile.data.local.LocalDataSource
 import com.pandorina.cinemobile.data.remote.RemoteDataSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped

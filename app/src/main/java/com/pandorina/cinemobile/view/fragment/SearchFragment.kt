@@ -2,6 +2,8 @@ package com.pandorina.cinemobile.view.fragment
 
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -56,7 +58,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             it.setOnQueryTextListener(this)
             it.maxWidth = Int.MAX_VALUE
             it.setIconifiedByDefault(false)
-            it.requestFocusFromTouch()
+            it.requestFocus()
+            Util.Keyboard(requireContext()).show()
         }.also {
             searchMovies()
         }

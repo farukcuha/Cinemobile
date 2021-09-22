@@ -40,7 +40,7 @@
                 android:id="@+id/text_view_movie_overview_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
+                android:fontFamily="@font/montserrat_semi_bold"
                 android:maxLines="2"
                 android:textColor="@color/color_1"
                 android:textSize="20sp" />

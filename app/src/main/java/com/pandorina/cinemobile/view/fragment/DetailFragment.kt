@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pandorina.cinemobile.R
-import com.pandorina.cinemobile.data.NetworkResult
+import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.databinding.FragmentDetailBinding

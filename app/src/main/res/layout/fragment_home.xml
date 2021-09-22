@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.HomeFragment">
+    android:orientation="vertical"
+    tools:context=".view.fragment.HomeFragment"
+    android:id="@+id/sfegf">
 
-    <TextView
+    <recycler.coverflow.RecyclerCoverFlow
+        android:id="@+id/rv_trending"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+        android:layout_height="400dp"
+        tools:listitem="@layout/item_trend_movie"
+        app:fastScrollVerticalThumbDrawable="@drawable/ic_youtube"
+        />
 
-</FrameLayout>
+
+</LinearLayout>

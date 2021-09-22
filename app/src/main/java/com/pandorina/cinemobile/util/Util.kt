@@ -23,14 +23,8 @@ object Util {
 
     class Keyboard(val context: Context){
         private val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
-        fun show(){
-            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-        }
-
-        fun hide(windowToken: IBinder) {
-            imm.hideSoftInputFromWindow(windowToken, 0)
-        }
+        fun show(){ imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0) }
+        fun hide(windowToken: IBinder) { imm.hideSoftInputFromWindow(windowToken, 0) }
     }
 
     fun ImageView.loadImage(url: String?) {

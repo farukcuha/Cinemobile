@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:maxLines="2"
             tools:text="Teen Titans Go"
             android:textColor="@color/color_1"
@@ -45,7 +45,7 @@
             android:id="@+id/text_view_release_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:maxLines="1"
             tools:text="2020" />
 

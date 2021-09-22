@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile.data
+package com.pandorina.cinemobile.data.remote
 
 import retrofit2.Response import java.lang.Exception
 
@@ -20,5 +20,5 @@ abstract class ApiResponse {
         }
     }
     private fun <T> error(errorMessage: String): NetworkResult<T> =
-            NetworkResult.Error("Api call failed: $errorMessage")
+        NetworkResult.Error("Api call failed: $errorMessage")
 }

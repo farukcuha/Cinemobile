@@ -1,7 +1,7 @@
 package com.pandorina.cinemobile.viewmodel
 
 import androidx.lifecycle.*
-import com.pandorina.cinemobile.data.NetworkResult
+import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.data.repository.Repository

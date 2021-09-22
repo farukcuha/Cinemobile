@@ -25,5 +25,8 @@
     <string name="videos">Video</string>
     <string name="image">Resim</string>
     <string name="search_movie">Film Ara…</string>
+    <string name="add_to_favorites">Favorilere Ekle</string>
+    <string name="share">Paylaş</string>
+    <string name="trending_today">Trendlerde Bugün</string>
     <string name="hello_blank_fragment">Merhaba Dünya</string>
 </resources>
