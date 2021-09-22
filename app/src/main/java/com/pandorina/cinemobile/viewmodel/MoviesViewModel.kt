@@ -1,108 +1,50 @@
 package com.pandorina.cinemobile.viewmodel
 
-import androidx.lifecycle.*
-import com.pandorina.cinemobile.data.repository.Repository
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.pandorina.cinemobile.data.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.MovieResponse
+import com.pandorina.cinemobile.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
-    val discoverList = MutableLiveData<MovieResponse>()
-    val discoverIsLoaded = MutableLiveData(false)
+    val discoverMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
+    val popularMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
+    val topRatedMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
+    val nowPlayingMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
+    val upcomingMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
+    var job: Job? = null
 
-    val popularList = MutableLiveData<MovieResponse>()
-    val popularIsLoaded = MutableLiveData(false)
-
-    val topRatedList = MutableLiveData<MovieResponse>()
-    val topRatedIsLoaded = MutableLiveData(false)
-
-    val nowPlayingList = MutableLiveData<MovieResponse>()
-    val nowPlayingIsLoaded = MutableLiveData(false)
-
-    val upcomingList = MutableLiveData<MovieResponse>()
-    val upcomingIsLoaded = MutableLiveData(false)
-
+    fun getMovieGroup(movieGroup: String, list: MutableLiveData<NetworkResult<MovieResponse>>) {
+        list.value ?: run {
+            job = viewModelScope.launch {
+                repository.remoteDataSource.getMovieGroup(movieGroup, 1).collect {
+                    list.value = it
+                }
+            }
+            job = null
+        }
+    }
 
     fun getDiscoverMovies() {
-        viewModelScope.launch {
-            try {
-                val response = repository.getDiscoverMovies()
-                if (response.isSuccessful && response.body() != null) {
-                    discoverList.postValue(response.body())
-                    discoverIsLoaded.postValue(true)
-                } else {
-                    discoverIsLoaded.postValue(false)
+        discoverMovieList.value ?: run {
+            job = viewModelScope.launch {
+                repository.remoteDataSource.getDiscoverMovies().collect {
+                    discoverMovieList.value = it
                 }
-            }catch (e: Exception){
-
             }
+            job = null
         }
     }
 
-    fun getPopularMovies() {
-        viewModelScope.launch {
-            try {
-                val response = repository.getPopularMovies()
-                if (response.isSuccessful && response.body() != null) {
-                    popularList.postValue(response.body())
-                    popularIsLoaded.postValue(true)
-                } else {
-                    popularIsLoaded.postValue(false)
-                }
-            }catch (e: Exception){
-
-            }
-        }
-    }
-
-    fun getTopRatedMovies() {
-        viewModelScope.launch {
-            try {
-                val response = repository.getTopRatedMovies()
-                if (response.isSuccessful && response.body() != null) {
-                    topRatedList.postValue(response.body())
-                    topRatedIsLoaded.postValue(true)
-                } else {
-                    topRatedIsLoaded.postValue(false)
-                }
-            }catch (e: Exception){
-
-            }
-        }
-    }
-
-    fun getNowPlayingMovies() {
-        viewModelScope.launch {
-            try {
-                val response = repository.getNowPlayingMovies()
-                if (response.isSuccessful && response.body() != null) {
-                    nowPlayingList.postValue(response.body())
-                    nowPlayingIsLoaded.postValue(true)
-                } else {
-                    nowPlayingIsLoaded.postValue(false)
-                }
-            }catch (e: Exception){
-
-            }
-        }
-    }
-
-    fun getUpcomingMovies() {
-        viewModelScope.launch {
-            try {
-                val response = repository.getUpcomingMovies()
-                if (response.isSuccessful && response.body() != null) {
-                    upcomingList.postValue(response.body())
-                    upcomingIsLoaded.postValue(true)
-                } else {
-                    upcomingIsLoaded.postValue(false)
-                }
-            }catch (e: Exception){
-
-            }
-        }
+    override fun onCleared() {
+        super.onCleared()
+        job = null
     }
 }

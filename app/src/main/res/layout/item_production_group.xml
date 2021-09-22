@@ -13,9 +13,9 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <include
+        <TextView
             android:id="@+id/text_view_header_popular_movies"
-            layout="@layout/text_view_header_1"
+            style="@style/header_large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.2" />

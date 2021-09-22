@@ -2,9 +2,7 @@ package com.pandorina.cinemobile.data.remote.model
 
 import android.os.Parcelable
 import com.pandorina.cinemobile.util.Constant
-import com.pandorina.cinemobile.view.fragment.movie.MovieOverviewFragment
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
 
 @Parcelize
 data class MovieDetail(val backdrop_path: String?,

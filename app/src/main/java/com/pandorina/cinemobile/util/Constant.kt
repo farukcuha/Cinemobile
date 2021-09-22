@@ -19,5 +19,10 @@ object Constant {
     const val PATH_NOW_PLAYING = "now_playing"
     const val PATH_UPCOMING = "upcoming"
 
+    const val ARG_MOVIE = "arg_movie"
+    const val ARG_MOVIE_DETAIL = "arg_movie_detail"
+    const val ARG_GENRE = "arg_genre"
+    const val ARG_TITLE = "arg_title"
+
 
 }

@@ -5,56 +5,65 @@ import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.pandorina.cinemobile.data.ApiResponse
 import com.pandorina.cinemobile.data.NetworkResult
-import com.pandorina.cinemobile.data.remote.model.GenreResponse
 import com.pandorina.cinemobile.data.remote.paging.MoreMoviesPagingSource
 import com.pandorina.cinemobile.data.remote.paging.MovieByGenresPagingSource
 import com.pandorina.cinemobile.data.remote.paging.SearchMoviesPagingSource
-import com.pandorina.cinemobile.data.remote.service.TMDBApi
+import com.pandorina.cinemobile.data.remote.service.MovieService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
-import com.pandorina.cinemobile.util.Constant
-class RemoteDataSource @Inject constructor(val api: TMDBApi): ApiResponse(){
 
+class RemoteDataSource @Inject constructor(val api: MovieService) : ApiResponse() {
+    suspend fun getDiscoverMovies() = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getDiscoverMovies(null, 1) })
+    }.flowOn(Dispatchers.IO)
 
-    suspend fun getDiscoverMovies() = api.getDiscoverMovies(1)
+    suspend fun getMovieGroup(movieGroup: String, page: Int) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getMovieGroup(movieGroup, page) })
+    }.flowOn(Dispatchers.IO)
 
-    suspend fun getPopularMovies() = api.getPopularMovies(1)
+    suspend fun getMovieDetail(movieId: Int) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getMovieDetail(movieId) })
+    }.flowOn(Dispatchers.IO)
 
-    suspend fun getTopRatedMovies() = api.getTopRatedMovies(1)
+    suspend fun getMovieCollection(collectionId: Int) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getMovieCollection(collectionId) })
+    }.flowOn(Dispatchers.IO)
 
-    suspend fun getNowPlayingMovies() = api.getNowPlayingMovies(1)
+    suspend fun getSimilarMovies(movieId: Int?) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getSimilarMovies(movieId) })
+    }.flowOn(Dispatchers.IO)
 
-    suspend fun getUpcomingMovies() = api.getUpcomingMovies(1)
-
-    fun getSearchMovies(query: String) = Pager(PagingConfig(pageSize = 20)){
+    fun getSearchMovies(query: String) = Pager(PagingConfig(pageSize = 20)) {
         SearchMoviesPagingSource(api, query)
     }.liveData
 
-    suspend fun getMovieDetail(movieId: Int) = api.getMovieDetail(movieId)
-    suspend fun getCast(id: Int, productionType: String) = api.getCast(productionType, id)
-    suspend fun getMovieCollection(collectionId: Int) = api.getMovieCollection(collectionId)
-    suspend fun getSimilarMovies(movieId: Int?) = api.getSimilarMovies(movieId)
-    suspend fun getMovieVideos(movieId: Int) = api.getMovieVideos(movieId)
-    suspend fun getMovieImages(movieId: Int) = api.getMovieImages(movieId, "en")
+    fun getMoviesByGenres(genreId: Int) = Pager(PagingConfig(pageSize = 20)) {
+        MovieByGenresPagingSource(api, genreId)
+    }.flow
 
-    suspend fun getGenres(productionType: String) =  flow<NetworkResult<GenreResponse>>{
+    fun getMoreMovieGroup(path: String) = Pager(PagingConfig(pageSize = 20)) {
+        MoreMoviesPagingSource(api, path)
+    }.flow
+
+    suspend fun getVideos(path: String, id: Int) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getVideos(path, id) })
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getGenres(productionType: String) = flow {
+        emit(NetworkResult.Loading())
         emit(safeApiCall { api.getGenres(productionType) })
-    }.flowOn(Dispatchers.Main)
+    }.flowOn(Dispatchers.IO)
 
-    fun getMoviesByGenres(genreId: Int) = Pager(PagingConfig(pageSize = 20)){
-        MovieByGenresPagingSource(api, genreId) }.flow
-
-    fun getMorePopularMovies() = Pager(PagingConfig(pageSize = 20)) {
-        MoreMoviesPagingSource(api, Constant.PATH_POPULAR) }.flow
-
-    fun getMoreTopRatedMovies() = Pager(PagingConfig(pageSize = 20)) {
-        MoreMoviesPagingSource(api, Constant.PATH_TOP_RATED) }.flow
-
-    fun getMoreNowPlayingMovies() = Pager(PagingConfig(pageSize = 20)) {
-        MoreMoviesPagingSource(api, Constant.PATH_NOW_PLAYING) }.flow
-
-    fun getMoreUpcomingMovies() = Pager(PagingConfig(pageSize = 20)) {
-        MoreMoviesPagingSource(api, Constant.PATH_UPCOMING) }.flow
+    suspend fun getCast(id: Int, productionType: String) = flow {
+        emit(NetworkResult.Loading())
+        emit(safeApiCall { api.getCast(productionType, id) })
+    }.flowOn(Dispatchers.IO)
 }

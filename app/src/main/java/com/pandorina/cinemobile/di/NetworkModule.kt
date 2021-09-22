@@ -3,7 +3,7 @@ package com.pandorina.cinemobile.di
 import android.content.Context
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.RemoteDataSource
-import com.pandorina.cinemobile.data.remote.service.TMDBApi
+import com.pandorina.cinemobile.data.remote.service.MovieService
 import com.pandorina.cinemobile.util.Constant
 import dagger.Module
 import dagger.Provides
@@ -35,18 +35,19 @@ object NetworkModule {
                                     .build()
                             chain.proceed(chain.request().newBuilder().url(url).build())
                         }
-                        .connectTimeout(30, TimeUnit.MINUTES)
-                        .readTimeout(30, TimeUnit.MINUTES)
-                        .writeTimeout(30, TimeUnit.MINUTES)
-                        .build())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+                    .connectTimeout(30, TimeUnit.MINUTES)
+                    .readTimeout(30, TimeUnit.MINUTES)
+                    .writeTimeout(30, TimeUnit.MINUTES)
+                    .build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
-    @Provides
-    @Singleton
-    fun provideApi(retrofit: Retrofit): TMDBApi = retrofit.create(TMDBApi::class.java)
 
     @Provides
     @Singleton
-    fun provideRemoteDataSource(api: TMDBApi): RemoteDataSource = RemoteDataSource(api)
+    fun provideApi(retrofit: Retrofit): MovieService = retrofit.create(MovieService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(api: MovieService): RemoteDataSource = RemoteDataSource(api)
 }
