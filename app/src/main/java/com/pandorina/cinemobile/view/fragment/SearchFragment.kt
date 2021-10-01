@@ -59,7 +59,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
             it.maxWidth = Int.MAX_VALUE
             it.setIconifiedByDefault(false)
             it.requestFocus()
-            Util.Keyboard(requireContext()).show()
         }.also {
             searchMovies()
         }

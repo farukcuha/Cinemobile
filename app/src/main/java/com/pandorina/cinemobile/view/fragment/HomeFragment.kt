@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
@@ -28,8 +31,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate, null) {
-    val homeViewModel by viewModels<HomeViewModel>()
-    val genreViewModel by viewModels<GenresViewModel>()
+    private val homeViewModel by viewModels<HomeViewModel>()
+    private val genreViewModel by viewModels<GenresViewModel>()
 
     private val trendingAdapter = TrendingAdapter()
 
@@ -53,6 +56,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_fragment_action_bar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onResume() {
         super.onResume()
         binding.rvTrending.layoutManager?.scrollToPosition(trendingAdapter.currentScrollPosition)
@@ -60,6 +71,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun setUpViews() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.trending_today)
+        setHasOptionsMenu(true)
         binding.btnRandom.setOnLongClickListener{
             getBottomSheet().show()
             true

@@ -46,6 +46,7 @@
     <string name="portuguese">Portekizce</string>
     <string name="polish">Lehçe</string>
     <string name="arabic">Arapça</string>
+    <string name="hint">İpucu</string>
 
     <string-array name="languages">
         <item>@string/english</item>

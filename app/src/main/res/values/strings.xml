@@ -46,6 +46,7 @@
     <string name="portuguese">Portuguese</string>
     <string name="polish">Polish</string>
     <string name="arabic">Arabic</string>
+    <string name="hint">Hint</string>
 
     <string-array name="years">
         <item>2021</item>

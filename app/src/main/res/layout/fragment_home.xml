@@ -19,7 +19,6 @@
         tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_trend_movie" />
 
-
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_random"
         android:layout_width="match_parent"
