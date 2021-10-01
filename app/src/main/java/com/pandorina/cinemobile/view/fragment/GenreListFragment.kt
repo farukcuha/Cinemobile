@@ -18,7 +18,6 @@ class GenreListFragment :
     private val mAdapter = GenreListAdapter()
 
     override fun observeData() {
-        viewModel.getGenres(Constant.PATH_MOVIE)
         viewModel.genreResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -32,7 +31,7 @@ class GenreListFragment :
 
                 }
                 is NetworkResult.Error -> {
-                    //Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+
                 }
             }
         }

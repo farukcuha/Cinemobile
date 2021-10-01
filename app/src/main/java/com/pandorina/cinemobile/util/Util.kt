@@ -3,6 +3,7 @@ package com.pandorina.cinemobile.util
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.IBinder
 import android.view.View
 import android.view.inputmethod.InputMethodManager

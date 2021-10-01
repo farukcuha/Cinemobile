@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
-    android:layout_height="375dp"
+    android:layout_width="224dp"
+    android:layout_height="336dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scaleType="centerCrop"
     android:src="@drawable/image_holder_poster"

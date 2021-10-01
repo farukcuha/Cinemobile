@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <com.skydoves.powerspinner.PowerSpinnerView
+            android:id="@+id/spn_years"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:background="@color/color_2"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:hint="Years"
+            android:padding="10dp"
+            android:textColor="@color/color_1"
+            android:textColorHint="@color/color_1"
+            android:textSize="14.5sp"
+            android:textStyle="bold"
+            app:spinner_arrow_gravity="end"
+            app:spinner_arrow_padding="8dp"
+            app:spinner_arrow_tint="@color/color_1"
+            app:spinner_divider_color="@color/color_1"
+            app:spinner_divider_show="true"
+            app:spinner_divider_size="0.4dp"
+            app:spinner_item_array="@array/years"
+            app:spinner_popup_animation="dropdown"
+            app:spinner_popup_background="@color/color_2"
+            app:spinner_popup_elevation="14dp" />
+
+        <com.skydoves.powerspinner.PowerSpinnerView
+            android:id="@+id/spn_languages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:background="@color/color_2"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:hint="Language"
+            android:padding="10dp"
+            android:textColor="@color/color_1"
+            android:textColorHint="@color/color_1"
+            android:textSize="14.5sp"
+            android:textStyle="bold"
+            app:spinner_arrow_gravity="end"
+            app:spinner_arrow_padding="8dp"
+            app:spinner_arrow_tint="@color/color_1"
+            app:spinner_divider_color="@color/color_1"
+            app:spinner_divider_show="true"
+            app:spinner_divider_size="0.4dp"
+            app:spinner_item_array="@array/languages"
+            app:spinner_popup_animation="dropdown"
+            app:spinner_popup_background="@color/color_2"
+            app:spinner_popup_elevation="14dp" />
+    </LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cg_genres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:chipSpacingVertical="16dp" />
+
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/color_1"
+        fancy:fb_focusColor="@color/color_2"
+        fancy:fb_fontIconResource="&#xf00c;"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="20dp"
+        fancy:fb_text="SUBMIT"
+        fancy:fb_textColor="#FFFFFF"
+        fancy:fb_textFontRes="@font/montserrat_semi_bold"
+        fancy:fb_textSize="15sp"
+        fancy:layout_constraintBottom_toBottomOf="parent"
+        fancy:layout_constraintEnd_toEndOf="parent"
+        fancy:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+</LinearLayout>

@@ -17,6 +17,7 @@ interface MovieService {
         @Query("with_genres") withGenres: String? = null,
         @Query("page") page: Int,
         @Query("primary_release_year") primaryReleaseYear: Int? = null,
+        @Query("primary_release_year") seconderReleaseYear: Int? = null,
         @Query("with_original_language") withOriginalLanguage: String? = null,
     ): Response<MovieResponse>
 
@@ -53,10 +54,8 @@ interface MovieService {
         @Path("id") id: Int
     ): Response<CreditResponse>
 
-    @GET("genre/{production_type}/list")
-    suspend fun getGenres(
-        @Path("production_type") production_type: String
-    ): Response<GenreResponse>
+    @GET("genre/movie/list")
+    suspend fun getGenres(): Response<GenreResponse>
 
     @GET("{production_type}/{id}/videos")
     suspend fun getVideos(

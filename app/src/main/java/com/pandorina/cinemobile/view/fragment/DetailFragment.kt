@@ -12,6 +12,7 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.remote.model.Movie
+import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentDetailBinding
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Util.loadImage
@@ -26,6 +27,7 @@ class DetailFragment :
     BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate, Constant.ARG_MOVIE) {
     private val viewModel: DetailViewModel by viewModels()
     var movie: Movie? = null
+    var movieDetail: MovieDetail? = null
 
     override fun observeData() {
         movie = argument as Movie
@@ -33,11 +35,11 @@ class DetailFragment :
         binding.imageViewMovieDetailBackdropImage.loadImage(movie?.backdrop_path_url)
         viewModel.currentMovieId.value = movie?.id
         viewModel.getMovieDetail()
+        observeMovieDetail()
     }
 
     override fun setUpViews() {
         setHasOptionsMenu(true)
-        setUpViewPager()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -82,63 +84,17 @@ class DetailFragment :
             action = Intent.ACTION_SEND
             type = "text/plain"
             putExtra(Intent.EXTRA_TITLE, movie?.title)
-            putExtra(Intent.EXTRA_TEXT, "${Constant.WEB_URL}${movie?.id}")
+            putExtra(Intent.EXTRA_TEXT, "${Constant.IMDB_URL}${movieDetail?.imdb_id}")
         }, null)
         startActivity(share)
     }
 
-    private fun setUpViewPager() {
+    private fun observeMovieDetail() {
         viewModel.movieDetail.observe(viewLifecycleOwner) { networkResult ->
             when (networkResult) {
                 is NetworkResult.Success -> {
-                    val movieDetail = networkResult.data
-                    val tabLayout = binding.tabLayoutMovieDetail
-                    val viewPager = binding.viewPagerMovieDetail
-
-                    val fragmentList = arrayListOf<MovieDetailFragmentModel>()
-                    fragmentList.add(
-                        MovieDetailFragmentModel(
-                            getString(R.string.overview),
-                            OverviewFragment()
-                        )
-                    )
-                    fragmentList.add(
-                        MovieDetailFragmentModel(
-                            getString(R.string.cast),
-                            CastFragment()
-                        )
-                    )
-                    movieDetail?.belongs_to_collection?.let {
-                        fragmentList.add(
-                            MovieDetailFragmentModel(
-                                getString(R.string.collection),
-                                CollectionFragment()
-                            )
-                        )
-                    }
-                    fragmentList.add(
-                        MovieDetailFragmentModel(
-                            getString(R.string.similar),
-                            SimilarFragment()
-                        )
-                    )
-                    fragmentList.add(
-                        MovieDetailFragmentModel(
-                            getString(R.string.videos),
-                            VideosFragment()
-                        )
-                    )
-
-                    viewPager.adapter = DetailFragmentAdapter(
-                        childFragmentManager,
-                        lifecycle,
-                        fragmentList,
-                        movieDetail
-                    )
-
-                    TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                        tab.text = fragmentList[position].title
-                    }.attach()
+                    movieDetail = networkResult.data
+                    setUpViewPager()
                 }
                 is NetworkResult.Error -> {
 
@@ -148,7 +104,55 @@ class DetailFragment :
 
     }
 
+    private fun setUpViewPager(){
+        val tabLayout = binding.tabLayoutMovieDetail
+        val viewPager = binding.viewPagerMovieDetail
+
+        val fragmentList = arrayListOf<MovieDetailFragmentModel>()
+        fragmentList.add(
+            MovieDetailFragmentModel(
+                getString(R.string.overview),
+                OverviewFragment()
+            )
+        )
+        fragmentList.add(
+            MovieDetailFragmentModel(
+                getString(R.string.cast),
+                CastFragment()
+            )
+        )
+        movieDetail?.belongs_to_collection?.let {
+            fragmentList.add(
+                MovieDetailFragmentModel(
+                    getString(R.string.collection),
+                    CollectionFragment()
+                )
+            )
+        }
+        fragmentList.add(
+            MovieDetailFragmentModel(
+                getString(R.string.similar),
+                SimilarFragment()
+            )
+        )
+        fragmentList.add(
+            MovieDetailFragmentModel(
+                getString(R.string.videos),
+                VideosFragment()
+            )
+        )
+
+        viewPager.adapter = DetailFragmentAdapter(
+            childFragmentManager,
+            lifecycle,
+            fragmentList,
+            movieDetail
+        )
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = fragmentList[position].title
+        }.attach()
+    }
+
     data class MovieDetailFragmentModel(val title: String, val fragment: Fragment)
-
-
 }

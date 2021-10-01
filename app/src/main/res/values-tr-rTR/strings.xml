@@ -29,4 +29,41 @@
     <string name="share">Paylaş</string>
     <string name="trending_today">Trendlerde Bugün</string>
     <string name="hello_blank_fragment">Merhaba Dünya</string>
+
+    <string name="english">İngilizce</string>
+    <string name="turkish">Türkçe</string>
+    <string name="japanese">Japonca</string>
+    <string name="french">Fransızca</string>
+    <string name="italian">İtalyanca</string>
+    <string name="spanish">İspanyolca</string>
+    <string name="german">Almanca</string>
+    <string name="chinese">Çince</string>
+    <string name="korean">Korece</string>
+    <string name="cantonese">Kantonca</string>
+    <string name="hindi">Hintçe</string>
+    <string name="russian">Rusça</string>
+    <string name="swedish">İsveççe</string>
+    <string name="portuguese">Portekizce</string>
+    <string name="polish">Lehçe</string>
+    <string name="arabic">Arapça</string>
+
+    <string-array name="languages">
+        <item>@string/english</item>
+        <item>@string/turkish</item>
+        <item>@string/japanese</item>
+        <item>@string/french</item>
+        <item>@string/italian</item>
+        <item>@string/spanish</item>
+        <item>@string/german</item>
+        <item>@string/chinese</item>
+        <item>@string/korean</item>
+        <item>@string/cantonese</item>
+        <item>@string/hindi</item>
+        <item>@string/russian</item>
+        <item>@string/swedish</item>
+        <item>@string/portuguese</item>
+        <item>@string/polish</item>
+        <item>@string/arabic</item>
+    </string-array>
 </resources>
+

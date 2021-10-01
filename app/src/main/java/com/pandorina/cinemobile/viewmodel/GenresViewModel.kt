@@ -19,10 +19,10 @@ class GenresViewModel @Inject constructor(private val repository: Repository) : 
     val genreResponse: LiveData<NetworkResult<GenreResponse>> = _genreResponse
     var job: Job? = null
 
-    fun getGenres(productionType: String) {
+    init {
         _genreResponse.value ?: run {
             job = viewModelScope.launch {
-                repository.remoteDataSource.getGenres(productionType).collect {
+                repository.remoteDataSource.getGenres().collect {
                     _genreResponse.value = it
                 }
             }

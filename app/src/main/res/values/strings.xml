@@ -29,4 +29,54 @@
     <string name="add_to_favorites">Add to Favorites</string>
     <string name="share">Share</string>
     <string name="trending_today">Trending Today</string>
+
+    <string name="english">English</string>
+    <string name="turkish">Turkish</string>
+    <string name="japanese">Japanese</string>
+    <string name="french">French</string>
+    <string name="italian">Italian</string>
+    <string name="spanish">Spanish</string>
+    <string name="german">German</string>
+    <string name="chinese">Chinese</string>
+    <string name="korean">Korean</string>
+    <string name="cantonese">Cantonese</string>
+    <string name="hindi">Hindi</string>
+    <string name="russian">Russian</string>
+    <string name="swedish">Swedish</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="polish">Polish</string>
+    <string name="arabic">Arabic</string>
+
+    <string-array name="years">
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2015–2018</item>
+        <item>2010–2014</item>
+        <item>2000–2009</item>
+        <item>1990–1999</item>
+        <item>1980–1989</item>
+        <item>1970–1979</item>
+        <item>1950–1969</item>
+        <item>1900–1949</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>@string/english</item>
+        <item>@string/turkish</item>
+        <item>@string/japanese</item>
+        <item>@string/french</item>
+        <item>@string/italian</item>
+        <item>@string/spanish</item>
+        <item>@string/german</item>
+        <item>@string/chinese</item>
+        <item>@string/korean</item>
+        <item>@string/cantonese</item>
+        <item>@string/hindi</item>
+        <item>@string/russian</item>
+        <item>@string/swedish</item>
+        <item>@string/portuguese</item>
+        <item>@string/polish</item>
+        <item>@string/arabic</item>
+    </string-array>
 </resources>
