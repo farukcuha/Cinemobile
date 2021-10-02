@@ -29,6 +29,9 @@
     <string name="add_to_favorites">Add to Favorites</string>
     <string name="share">Share</string>
     <string name="trending_today">Trending Today</string>
+    <string name="recommend_info">If you can\'t find a movie to watch, don\'t worry. Cinemobile
+        recommends you a movie among thousands of movies. All you have to do is click the button
+        below. If you long click on the button, you can filter the movie recommendation system.</string>
 
     <string name="english">English</string>
     <string name="turkish">Turkish</string>

@@ -1,18 +1,15 @@
 package com.pandorina.cinemobile.view.fragment
 
-import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
-import androidx.core.view.iterator
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.pandorina.cinemobile.Preferences
 import com.pandorina.cinemobile.R
@@ -21,13 +18,13 @@ import com.pandorina.cinemobile.data.remote.model.Genre
 import com.pandorina.cinemobile.databinding.FragmentHomeBinding
 import com.pandorina.cinemobile.databinding.ItemConfigurationBinding
 import com.pandorina.cinemobile.databinding.ItemGenreChipBinding
-import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.view.adapter.TrendingAdapter
+import com.pandorina.cinemobile.view.dialog.RecommendInfoDialogFragment
 import com.pandorina.cinemobile.viewmodel.GenresViewModel
 import com.pandorina.cinemobile.viewmodel.HomeViewModel
 import com.robertlevonyan.views.chip.Chip
-import com.skydoves.powerspinner.OnSpinnerItemSelectedListener
 import dagger.hilt.android.AndroidEntryPoint
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate, null) {
@@ -61,7 +58,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.menu_info -> RecommendInfoDialogFragment().show(childFragmentManager, "egege")
+        }
+        return true
     }
 
     override fun onResume() {
@@ -72,7 +72,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun setUpViews() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.trending_today)
         setHasOptionsMenu(true)
-        binding.btnRandom.setOnLongClickListener{
+        binding.btnRandom.setOnLongClickListener {
             getBottomSheet().show()
             true
         }
@@ -80,6 +80,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.rvTrending.apply {
             adapter = trendingAdapter
             setHasFixedSize(true)
+        }
+
+        binding.rvTrending.setOnItemSelectedListener {
+            Glide.with(binding.root)
+                .load(trendingAdapter.currentList[it].poster_path_url)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .centerCrop()
+                .apply(bitmapTransform(BlurTransformation(25, 1)))
+                .into(binding.ivHomeBackground)
         }
     }
 

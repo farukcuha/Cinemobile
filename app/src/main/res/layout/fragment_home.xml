@@ -8,6 +8,16 @@
     android:orientation="vertical"
     tools:context=".view.fragment.HomeFragment">
 
+    <ImageView
+        android:id="@+id/iv_home_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        fancy:layout_constraintBottom_toBottomOf="parent"
+        fancy:layout_constraintEnd_toEndOf="parent"
+        fancy:layout_constraintStart_toStartOf="parent"
+        fancy:layout_constraintTop_toTopOf="parent" />
+
     <recycler.coverflow.RecyclerCoverFlow
         android:id="@+id/rv_trending"
         android:layout_width="match_parent"

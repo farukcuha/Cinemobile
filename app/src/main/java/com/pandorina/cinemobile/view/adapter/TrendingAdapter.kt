@@ -1,9 +1,8 @@
 package com.pandorina.cinemobile.view.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
+import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.model.Movie

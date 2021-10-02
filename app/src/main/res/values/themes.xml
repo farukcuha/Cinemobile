@@ -32,4 +32,9 @@
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:textColor">@color/color_1</item>
     </style>
+
+    <style name="dialog_scale_animation_style" parent="android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/scale_in</item>
+        <item name="android:windowExitAnimation">@anim/scale_out</item>
+    </style>
 </resources>

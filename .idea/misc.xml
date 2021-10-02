@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ahmet/.gradle/caches/transforms-3/1d21a63656d64a9d47c8ef89f569a575/transformed/jetified-MaterialChipView-2.2.7/res/drawable-hdpi-v21/ic_close.xml" value="0.2703125" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/layout/fragment_by_genres.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/layout/fragment_cast.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/layout/fragment_favorite_movies.xml" value="0.25416666666666665" />
@@ -29,8 +30,19 @@
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/menu/movie_detail_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/menu/movie_fragment_action_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/menu/search_fragment_action_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_cancel.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_close.xml" value="1.08125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_delete.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_discover.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_expand.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_more.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/button_view_more.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_discover.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommend_info_dialog.xml" value="0.22262773722627738" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_configuration.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_trend_movie.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/menu/home_fragment_action_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/menu/movie_detail_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Cinemobile/app/src/main/res/drawable/bg_configuration.xml" value="0.2703125" />

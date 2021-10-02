@@ -47,6 +47,9 @@
     <string name="polish">Lehçe</string>
     <string name="arabic">Arapça</string>
     <string name="hint">İpucu</string>
+    <string name="recommend_info">İzleyecek bir film bulamadıysan endişelenme. Cinemobile binlerce
+        film arasından sana bir film önerir. Tek yapman gereken alttaki butona tıklamak. Butona
+        uzun tıklarsan film önerme sistemini filtreleyebilirsin.</string>
 
     <string-array name="languages">
         <item>@string/english</item>
