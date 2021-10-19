@@ -40,9 +40,13 @@
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/button_view_more.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_discover.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_info_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommend_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommend_info_dialog.xml" value="0.22262773722627738" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommended_movie_dialog.xml" value="0.264" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_configuration.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_trend_movie.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_vertical_list.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/menu/home_fragment_action_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/menu/movie_detail_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Cinemobile/app/src/main/res/drawable/bg_configuration.xml" value="0.2703125" />
@@ -66,5 +70,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2129032258064516" />
+      </ProjectState>
+    </option>
   </component>
 </project>

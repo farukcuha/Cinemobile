@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.dialog.RecommendedMovieDialog">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/btn_dismiss_dialog"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_cancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="224dp"
+                android:layout_height="336dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_dismiss_dialog"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/iv_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_holder_poster" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/header_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:paddingHorizontal="16dp"
+                android:text="Wrath of Man"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="2020"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_genres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:maxLines="2"
+                android:paddingHorizontal="16dp"
+                android:text="Aksiyon - Suç - Dram"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_year"
+                tools:ignore="MissingConstraints" />
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_random"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_genres"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="@color/color_1"
+                fancy:fb_focusColor="@color/color_2"
+                fancy:fb_fontIconResource="&#xf074;"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="30dp"
+                fancy:fb_text=""
+                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textFontRes="@font/montserrat_semi_bold"
+                fancy:fb_textSize="14sp"
+                fancy:layout_constraintBottom_toBottomOf="parent"
+                fancy:layout_constraintEnd_toEndOf="parent"
+                fancy:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

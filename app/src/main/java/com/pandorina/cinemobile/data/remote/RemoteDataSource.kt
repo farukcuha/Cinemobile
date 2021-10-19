@@ -21,10 +21,13 @@ class RemoteDataSource @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
     suspend fun getRandomMovies(
-        page: Int, primaryReleaseYear: Int,
-        withOriginalLanguage: String, withGenres: String) = flow {
+        withGenres: String?,
+        page: Int,
+        primaryReleaseYear: String?,
+        seconderReleaseYear: String?,
+        withOriginalLanguage: String?) = flow {
         emit(NetworkResult.Loading())
-        emit(safeApiCall { api.getDiscoverMovies(withGenres, page, primaryReleaseYear, null, withOriginalLanguage) })
+        emit(safeApiCall { api.getDiscoverMovies(withGenres, page, primaryReleaseYear, seconderReleaseYear, withOriginalLanguage) })
     }.flowOn(Dispatchers.IO)
 
     suspend fun getDiscoverMovies() = flow {

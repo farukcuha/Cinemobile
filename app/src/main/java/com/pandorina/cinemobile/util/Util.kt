@@ -71,4 +71,25 @@ object Util {
         })
     }
 
+    fun getLanguageCodeByIndex(id: Int): String{
+        return when(id){
+            0 -> "en"
+            1 -> "tr"
+            2 -> "ja"
+            3 -> "fr"
+            4 -> "it"
+            5 -> "es"
+            6 -> "de"
+            7 -> "cn"
+            8 -> "ko"
+            9 -> "cn"
+            10 -> "hi"
+            11 -> "ru"
+            12 -> "se"
+            13 -> "prt"
+            14 -> "pl"
+            15 -> "ar"
+            else -> "en"
+        }
+    }
 }

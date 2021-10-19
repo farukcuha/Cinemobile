@@ -16,9 +16,10 @@ interface MovieService {
     suspend fun getDiscoverMovies(
         @Query("with_genres") withGenres: String? = null,
         @Query("page") page: Int,
-        @Query("primary_release_year") primaryReleaseYear: Int? = null,
-        @Query("primary_release_year") seconderReleaseYear: Int? = null,
+        @Query("primary_release_year") primaryReleaseYear: String? = null,
+        @Query("primary_release_year") seconderReleaseYear: String? = null,
         @Query("with_original_language") withOriginalLanguage: String? = null,
+        @Query("sort_by") sortBy: String = "popularity.desc"
     ): Response<MovieResponse>
 
     @GET("movie/{movie_group}")

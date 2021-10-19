@@ -23,11 +23,15 @@ class HomeViewModel @Inject constructor(private val repository: Repository): Vie
     val trendingMovieResponse = MutableLiveData<NetworkResult<MovieResponse>>()
     var job: Job? = null
 
-    fun getRandomMovies(page: Int, primaryReleaseYear: Int,
-                       withOriginalLanguage: String, withGenres: String) {
+    fun getRandomMovies(
+        withGenres: String?,
+        page: Int,
+        primaryReleaseYear: String?,
+        seconderReleaseYear: String?,
+        withOriginalLanguage: String?) {
         job = viewModelScope.launch {
             repository.remoteDataSource.getRandomMovies(
-                page, primaryReleaseYear, withOriginalLanguage, withGenres
+                withGenres, page, primaryReleaseYear, seconderReleaseYear, withOriginalLanguage
             ).collect { randomMovieResponse.value = it }
         }
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.dialog.RecommendInfoDialogFragment">
+    tools:context=".view.dialog.InfoDialogFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -13,8 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/btn_dismiss_dialog"
