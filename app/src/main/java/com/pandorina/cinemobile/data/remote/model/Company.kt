@@ -10,5 +10,5 @@ data class Company(val id: Int,
                    val logo_path: String,
                    val name: String,
                    val origin_country: String): Parcelable{
-    val logo_path_url get() = Constant.IMAGE_URL_LOW + logo_path
+    val logoPathUr get() = Constant.IMAGE_URL_LOW + logo_path
 }

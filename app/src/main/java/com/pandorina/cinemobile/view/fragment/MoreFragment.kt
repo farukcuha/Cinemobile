@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class MoreFragment :
     BaseFragment<FragmentMoreBinding>(FragmentMoreBinding::inflate, Constant.ARG_TITLE) {
     private val viewModel: MoreViewModel by viewModels()
-    var dataAdapter = VerticalPagingAdapter()
+    private var dataAdapter = VerticalPagingAdapter()
 
     override fun observeData() {
         Util.getPathByTitle(requireContext(), argument as String)?.let {

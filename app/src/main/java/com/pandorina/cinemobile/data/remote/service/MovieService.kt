@@ -1,6 +1,5 @@
 package com.pandorina.cinemobile.data.remote.service
 
-import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.*
 import com.pandorina.cinemobile.data.remote.model.Collection
 import retrofit2.Response
@@ -16,10 +15,13 @@ interface MovieService {
     suspend fun getDiscoverMovies(
         @Query("with_genres") withGenres: String? = null,
         @Query("page") page: Int,
-        @Query("primary_release_year") primaryReleaseYear: String? = null,
-        @Query("primary_release_year") seconderReleaseYear: String? = null,
+        @Query("primary_release_date.gte") primaryReleaseYear: String? = null,
+        @Query("primary_release_date.lte") seconderReleaseYear: String? = null,
         @Query("with_original_language") withOriginalLanguage: String? = null,
-        @Query("sort_by") sortBy: String = "popularity.desc"
+        @Query("vote_average.gte") voteAverageGte: String = "5",
+        @Query("sort_by") sortBy: String = "popularity.desc",
+        @Query("include_adult") include_adult: Boolean = false,
+        @Query("include_video") include_video: Boolean = true,
     ): Response<MovieResponse>
 
     @GET("movie/{movie_group}")

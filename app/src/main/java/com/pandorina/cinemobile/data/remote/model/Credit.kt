@@ -11,5 +11,5 @@ data class Credit(val id: Int,
                   val cast_id: Int,
                   val character: String,
                   val credit_id: String){
-    val profile_path_url get() = Constant.IMAGE_URL_LOW + profile_path
+    val profilePathUrl get() = Constant.IMAGE_URL_LOW + profile_path
 }

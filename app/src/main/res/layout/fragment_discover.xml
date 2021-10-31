@@ -16,10 +16,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/view_pager_movie"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="250dp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager_movie"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <include
+                    android:id="@+id/shimmer_view_pager"
+                    layout="@layout/shimmer_item_view_pager" />
+            </FrameLayout>
+
+            <include
+                android:id="@+id/ad_discover_1"
+                layout="@layout/ad_banner" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,16 +50,28 @@
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/button_view_all_popular_movies"
+                    android:id="@+id/button_view_all_popular"
                     layout="@layout/button_view_more" />
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_popular_movies"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_popular_movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+
+                <include
+                    android:id="@+id/shimmer_popular"
+                    layout="@layout/shimmer_group_horizontal_list"
+                    android:visibility="gone" />
+
+
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,17 +89,31 @@
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/button_view_view_all_top_rated_movies"
-                    layout="@layout/button_view_more"
-                    />
+                    android:id="@+id/button_view_top_rated"
+                    layout="@layout/button_view_more" />
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_top_rated_movies"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_top_rated_movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+
+                <include
+                    android:id="@+id/shimmer_top_rated"
+                    layout="@layout/shimmer_group_horizontal_list"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <include
+                android:id="@+id/ad_discover_2"
+                layout="@layout/ad_banner" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,17 +131,27 @@
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/button_view_all_now_playing_movies"
-                    layout="@layout/button_view_more"
-                     />
+                    android:id="@+id/button_view_now_playing"
+                    layout="@layout/button_view_more" />
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_now_playing_movies"
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_now_playing_movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+
+                <include
+                    android:id="@+id/shimmer_now_playing"
+                    layout="@layout/shimmer_group_horizontal_list"
+                    android:visibility="gone" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -120,16 +169,26 @@
                     android:layout_weight="0.2" />
 
                 <include
-                    android:id="@+id/button_view_all_upcoming_movies"
+                    android:id="@+id/button_view_upcoming"
                     layout="@layout/button_view_more" />
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_upcoming_movies"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_upcoming_movies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+
+                <include
+                    android:id="@+id/shimmer_upcoming"
+                    layout="@layout/shimmer_group_horizontal_list"
+                    android:visibility="gone" />
+            </FrameLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

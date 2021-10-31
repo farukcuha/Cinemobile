@@ -14,10 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CastViewModel @Inject constructor(private val repository: Repository): ViewModel() {
+class CastViewModel @Inject constructor(private val repository: Repository): BaseViewModel() {
     private val _castList = MutableLiveData<NetworkResult<CreditResponse>>()
     val castList: LiveData<NetworkResult<CreditResponse>> = _castList
-    var job: Job? = null
 
     fun getCast(id: Int, production_type: String) {
         _castList.value ?: run {
@@ -27,10 +26,5 @@ class CastViewModel @Inject constructor(private val repository: Repository): Vie
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
     }
 }

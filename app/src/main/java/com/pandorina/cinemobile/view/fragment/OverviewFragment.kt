@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentOverviewBinding
+import com.pandorina.cinemobile.util.CinemobileAd
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Util.loadImage
 import com.pandorina.cinemobile.view.adapter.CompanyListAdapter
@@ -33,6 +34,8 @@ class OverviewFragment : BaseFragment<FragmentOverviewBinding>(
     override fun setUpViews() {
         setUpRecyclerViews()
         setContentText()
+        binding.adOverview1.root.loadAd(CinemobileAd.getAdRequest())
+        binding.adOverview2.root.loadAd(CinemobileAd.getAdRequest())
     }
 
     private fun setUpRecyclerViews() {
@@ -57,7 +60,7 @@ class OverviewFragment : BaseFragment<FragmentOverviewBinding>(
             textViewMovieOverviewProductionCountriesHeader.text =
                 getString(R.string.production_countries)
 
-            imageViewMovieOverviewPosterImage.loadImage(movieDetail?.poster_path_url)
+            imageViewMovieOverviewPosterImage.loadImage(movieDetail?.posterPathUrl)
             textViewMovieOverviewName.text = movieDetail?.title
             textViewMovieOverviewReleaseDateAndRuntime.text =
                 "${movieDetail?.release_date} - ${movieDetail?.runtime} ${getString(R.string.minute)}"
@@ -70,6 +73,4 @@ class OverviewFragment : BaseFragment<FragmentOverviewBinding>(
         super.onResume()
         binding.root.requestLayout()
     }
-
-
 }

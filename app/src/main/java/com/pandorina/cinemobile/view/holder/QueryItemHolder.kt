@@ -11,7 +11,7 @@ class QueryItemHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: MovieQuery) {
-        binding.textViewQuery.apply {
+        binding.root.apply {
             text = item.query
             setOnClickListener {
                 mItemClickListener.onQueryItem(item.query)

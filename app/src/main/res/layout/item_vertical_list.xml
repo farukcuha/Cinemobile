@@ -17,6 +17,7 @@
         android:src="@drawable/image_holder_poster"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/vertical_list_poster_image"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -66,8 +67,7 @@
             android:layout_height="25dp"
             android:layout_gravity="right|bottom"
             android:background="@drawable/ic_expand"
+            android:contentDescription="@string/expand_image"
             tools:ignore="RtlHardcoded" />
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

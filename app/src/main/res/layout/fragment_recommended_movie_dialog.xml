@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageButton
                 android:id="@+id/btn_dismiss_dialog"
@@ -25,6 +24,7 @@
                 android:background="@drawable/ic_cancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/close_button"
                 tools:ignore="MissingConstraints" />
 
             <androidx.cardview.widget.CardView
@@ -44,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@string/recommend_movie_poster"
                     android:src="@drawable/image_holder_poster" />
 
             </androidx.cardview.widget.CardView>
@@ -55,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:paddingHorizontal="16dp"
-                android:text="Wrath of Man"
+                tools:text="Wrath of Man"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="2020"
+                tools:text="2020"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +85,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:maxLines="2"
                 android:paddingHorizontal="16dp"
-                android:text="Aksiyon - Suç - Dram"
+                tools:text="Aksiyon - Suç - Dram"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,34 +93,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_year"
                 tools:ignore="MissingConstraints" />
 
-            <mehdi.sakout.fancybuttons.FancyButton
+            <ImageButton
                 android:id="@+id/btn_random"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
+                android:background="@drawable/img_random_button"
+                android:contentDescription="@string/random_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_genres"
-                fancy:fb_borderWidth="1dp"
-                fancy:fb_defaultColor="@color/color_1"
-                fancy:fb_focusColor="@color/color_2"
-                fancy:fb_fontIconResource="&#xf074;"
-                fancy:fb_iconPosition="left"
-                fancy:fb_radius="30dp"
-                fancy:fb_text=""
-                fancy:fb_textColor="#FFFFFF"
-                fancy:fb_textFontRes="@font/montserrat_semi_bold"
-                fancy:fb_textSize="14sp"
-                fancy:layout_constraintBottom_toBottomOf="parent"
-                fancy:layout_constraintEnd_toEndOf="parent"
-                fancy:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintStart_toStartOf="parent" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

@@ -18,10 +18,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: Repository): ViewModel() {
+class HomeViewModel @Inject constructor(private val repository: Repository): BaseViewModel() {
     val randomMovieResponse = MutableLiveData<NetworkResult<MovieResponse>>()
     val trendingMovieResponse = MutableLiveData<NetworkResult<MovieResponse>>()
-    var job: Job? = null
 
     fun getRandomMovies(
         withGenres: String?,
@@ -29,7 +28,7 @@ class HomeViewModel @Inject constructor(private val repository: Repository): Vie
         primaryReleaseYear: String?,
         seconderReleaseYear: String?,
         withOriginalLanguage: String?) {
-        job = viewModelScope.launch {
+        viewModelScope.launch {
             repository.remoteDataSource.getRandomMovies(
                 withGenres, page, primaryReleaseYear, seconderReleaseYear, withOriginalLanguage
             ).collect { randomMovieResponse.value = it }
@@ -42,10 +41,5 @@ class HomeViewModel @Inject constructor(private val repository: Repository): Vie
                     trendingMovieResponse.value = it
                 }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
     }
 }

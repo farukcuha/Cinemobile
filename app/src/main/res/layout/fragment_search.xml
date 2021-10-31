@@ -25,7 +25,7 @@
                 android:layout_gravity="end"
                 android:layout_margin="8dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="Clear All"
+                android:text="@string/clear_all"
                 android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView

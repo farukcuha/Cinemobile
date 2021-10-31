@@ -5,10 +5,6 @@ import android.graphics.drawable.ColorDrawable
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.DialogFragment
 import com.pandorina.cinemobile.R
-import android.view.ViewGroup
-
-
-
 
 abstract class BaseDialogFragment(@LayoutRes contentLayoutId: Int): DialogFragment(contentLayoutId) {
     override fun onStart() {

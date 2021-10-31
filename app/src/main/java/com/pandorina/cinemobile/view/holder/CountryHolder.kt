@@ -8,7 +8,7 @@ import com.pandorina.cinemobile.util.Util.loadImage
 class CountryHolder(val binding: ItemProductionCountriesBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Country) {
-        val flagImageUrl = "https://www.countryflags.io/${item.iso_3166_1}/shiny/64.png"
+        val flagImageUrl = "https://flagcdn.com/w320/${item.iso_3166_1.lowercase()}.png"
         binding.imageViewProductionCountryImage.loadImage(flagImageUrl)
         binding.textViewProductionCountryName.text = item.name
     }

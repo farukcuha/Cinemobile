@@ -2,8 +2,6 @@ package com.pandorina.cinemobile.view.fragment
 
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -25,8 +23,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     private val searchMoviesAdapter = VerticalPagingAdapter()
     private val movieQueryAdapter = QueryListAdapter(this)
 
-    var searchView: SearchView? = null
-    var currentQuery: String? = null
+    private var searchView: SearchView? = null
+    private var currentQuery: String? = null
 
     override fun setUpViews() {
         setUpRecyclerViews()

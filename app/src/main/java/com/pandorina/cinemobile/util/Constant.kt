@@ -20,4 +20,6 @@ object Constant {
     const val ARG_MOVIE_DETAIL = "arg_movie_detail"
     const val ARG_GENRE = "arg_genre"
     const val ARG_TITLE = "arg_title"
+
+    const val REMOTE_ERROR = "remote_error"
 }

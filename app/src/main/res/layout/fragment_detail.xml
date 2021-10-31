@@ -5,6 +5,7 @@
     android:id="@+id/coordinator_layout_movie_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_4"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -24,6 +25,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/image_holder_backdrop"
                 app:layout_collapseMode="parallax"
+                android:contentDescription="@string/detail_backdrop_image"
                 app:layout_collapseParallaxMultiplier="0.7" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

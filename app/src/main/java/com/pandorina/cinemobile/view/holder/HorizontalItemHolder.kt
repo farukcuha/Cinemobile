@@ -9,7 +9,7 @@ class HorizontalItemHolder(val binding: ItemHorizontalListBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Movie) {
         binding.apply {
-            imageViewImage.loadImage(item.poster_path_url)
+            imageViewImage.loadImage(item.posterPathUrl)
             textViewName.text = item.title
             textViewReleaseYear.text = item.release_date
         }

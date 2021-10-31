@@ -14,10 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class GenresViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class GenresViewModel @Inject constructor(private val repository: Repository) : BaseViewModel() {
     private val _genreResponse: MutableLiveData<NetworkResult<GenreResponse>> = MutableLiveData()
     val genreResponse: LiveData<NetworkResult<GenreResponse>> = _genreResponse
-    var job: Job? = null
 
     init {
         _genreResponse.value ?: run {
@@ -28,10 +27,4 @@ class GenresViewModel @Inject constructor(private val repository: Repository) : 
             }
         }
     }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
-    }
-
 }

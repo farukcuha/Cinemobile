@@ -1,22 +1,27 @@
-package com.pandorina.cinemobile.view
+package com.pandorina.cinemobile.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pandorina.cinemobile.R
+import com.pandorina.cinemobile.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    lateinit var navView: BottomNavigationView
-    lateinit var navController: NavController
+    private lateinit var navView: BottomNavigationView
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        MobileAds.initialize(this)
 
         navController = findNavController(R.id.nav_host_fragment)
         navView = findViewById(R.id.bottomNavigationView)

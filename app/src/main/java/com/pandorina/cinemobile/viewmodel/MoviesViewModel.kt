@@ -13,13 +13,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MoviesViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class MoviesViewModel @Inject constructor(private val repository: Repository): BaseViewModel() {
     val discoverMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
     val popularMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
     val topRatedMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
     val nowPlayingMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
     val upcomingMovieList = MutableLiveData<NetworkResult<MovieResponse>>()
-    var job: Job? = null
 
     fun getMovieGroup(movieGroup: String, list: MutableLiveData<NetworkResult<MovieResponse>>) {
         list.value ?: run {
@@ -41,10 +40,5 @@ class MoviesViewModel @Inject constructor(private val repository: Repository) : 
             }
             job = null
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
     }
 }

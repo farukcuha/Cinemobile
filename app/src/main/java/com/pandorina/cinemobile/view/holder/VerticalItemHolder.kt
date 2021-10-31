@@ -8,7 +8,7 @@ import com.pandorina.cinemobile.util.Util.loadImage
 
 class VerticalItemHolder(private val binding: ItemVerticalListBinding): RecyclerView.ViewHolder(binding.root){
     fun bind(item: Movie){
-        binding.image.loadImage(item.poster_path_url)
+        binding.image.loadImage(item.posterPathUrl)
         binding.textViewName.text = item.title
         binding.textViewReleaseYear.text = item.release_date
 

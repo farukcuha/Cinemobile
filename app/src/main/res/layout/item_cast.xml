@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/image_holder_cast"/>
+            android:contentDescription="@string/cast_image"
+            tools:src="@drawable/image_holder_cast" />
     </androidx.cardview.widget.CardView>
 
     <TextView

@@ -1,6 +1,10 @@
 package com.pandorina.cinemobile.view.fragment
 
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +13,7 @@ import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.MovieResponse
 import com.pandorina.cinemobile.databinding.FragmentDiscoverBinding
+import com.pandorina.cinemobile.util.CinemobileAd
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Util
 import com.pandorina.cinemobile.util.Util.navigate
@@ -29,7 +34,7 @@ class DiscoverFragment :
 
     private val moviesViewModel: MoviesViewModel by viewModels()
 
-    var currentViewPagerItem: Int? = 0
+    private var currentViewPagerItem: Int? = 0
 
     override fun setUpViews() {
         Util.setActionBarText(requireActivity(), getString(R.string.movies))
@@ -38,6 +43,8 @@ class DiscoverFragment :
         binding.viewPagerMovie.adapter = viewPagerAdapterDiscover
         setUpRecyclerViews()
         setHeaders()
+        binding.adDiscover1.root.loadAd(CinemobileAd.getAdRequest())
+        binding.adDiscover2.root.loadAd(CinemobileAd.getAdRequest())
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -56,19 +63,19 @@ class DiscoverFragment :
 
     private fun onClickViewAll() {
         binding.apply {
-            buttonViewAllPopularMovies.root.setOnClickListener {
+            buttonViewAllPopular.root.setOnClickListener {
                 it.navigate(R.id.moreFragment, Constant.ARG_TITLE, getString(R.string.popular))
             }
 
-            buttonViewViewAllTopRatedMovies.root.setOnClickListener {
+            buttonViewTopRated.root.setOnClickListener {
                 it.navigate(R.id.moreFragment, Constant.ARG_TITLE, getString(R.string.top_rated))
             }
 
-            buttonViewAllNowPlayingMovies.root.setOnClickListener {
+            buttonViewNowPlaying.root.setOnClickListener {
                 it.navigate(R.id.moreFragment, Constant.ARG_TITLE, getString(R.string.now_playing))
             }
 
-            buttonViewAllUpcomingMovies.root.setOnClickListener {
+            buttonViewUpcoming.root.setOnClickListener {
                 it.navigate(R.id.moreFragment, Constant.ARG_TITLE, getString(R.string.upcoming))
             }
         }
@@ -113,14 +120,16 @@ class DiscoverFragment :
     }
 
     override fun observeData() {
+        val shimmerViewPager = binding.shimmerViewPager.root
         moviesViewModel.apply {
             discoverMovieList.observe(viewLifecycleOwner, { result ->
                 when (result) {
                     is NetworkResult.Success -> {
                         result.data?.results?.let { viewPagerAdapterDiscover.submitList(it) }
+                        shimmerViewPager.isVisible = false
                     }
-                    is NetworkResult.Error -> return@observe
-                    is NetworkResult.Loading -> return@observe
+                    is NetworkResult.Error -> shimmerViewPager.isVisible = true
+                    is NetworkResult.Loading -> shimmerViewPager.isVisible = true
                 }
             })
 
@@ -130,24 +139,30 @@ class DiscoverFragment :
             getMovieGroup(Constant.PATH_NOW_PLAYING, moviesViewModel.nowPlayingMovieList)
             getMovieGroup(Constant.PATH_UPCOMING, moviesViewModel.upcomingMovieList)
 
-            observeMovieGroup(popularMovieList, popularAdapter)
-            observeMovieGroup(topRatedMovieList, topRatedAdapter)
-            observeMovieGroup(nowPlayingMovieList, nowPlayingAdapter)
-            observeMovieGroup(upcomingMovieList, upcomingAdapter)
+            observeMovieGroup(popularMovieList, popularAdapter, binding.shimmerPopular.root)
+            observeMovieGroup(topRatedMovieList, topRatedAdapter, binding.shimmerTopRated.root)
+            observeMovieGroup(
+                nowPlayingMovieList,
+                nowPlayingAdapter,
+                binding.shimmerNowPlaying.root
+            )
+            observeMovieGroup(upcomingMovieList, upcomingAdapter, binding.shimmerUpcoming.root)
         }
     }
 
     private fun observeMovieGroup(
         list: MutableLiveData<NetworkResult<MovieResponse>>,
-        adapter: HorizontalListAdapter
+        adapter: HorizontalListAdapter,
+        shimmer: LinearLayout
     ) {
         list.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is NetworkResult.Success -> {
                     result.data?.results?.let { adapter.submitList(it) }
+                    shimmer.isVisible = false
                 }
-                is NetworkResult.Error -> return@observe
-                is NetworkResult.Loading -> return@observe
+                is NetworkResult.Error -> shimmer.isVisible = true
+                is NetworkResult.Loading -> shimmer.isVisible = true
             }
         })
     }

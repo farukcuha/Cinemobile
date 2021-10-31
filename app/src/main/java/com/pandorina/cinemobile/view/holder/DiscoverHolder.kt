@@ -8,7 +8,7 @@ import com.pandorina.cinemobile.util.Util.loadImage
 class DiscoverHolder(val binding: ItemViewPagerBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Movie) {
         binding.apply {
-            imageViewViewPagerItemImage.loadImage(item.backdrop_path_url)
+            imageViewViewPagerItemImage.loadImage(item.backdropPathUrl)
             textViewViewPagerItemText.text = item.title
         }
     }

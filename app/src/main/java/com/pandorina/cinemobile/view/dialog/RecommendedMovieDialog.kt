@@ -1,21 +1,15 @@
 package com.pandorina.cinemobile.view.dialog
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.NetworkResult
-import com.pandorina.cinemobile.data.remote.model.Genre
 import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.databinding.FragmentRecommendedMovieDialogBinding
-import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Util.loadImage
-import com.pandorina.cinemobile.util.Util.navigate
-import com.pandorina.cinemobile.view.fragment.HomeFragment
 import com.pandorina.cinemobile.viewmodel.GenresViewModel
+import com.thekhaeng.pushdownanim.PushDownAnim
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,31 +23,37 @@ class RecommendedMovieDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentRecommendedMovieDialogBinding.bind(view)
         binding.btnDismissDialog.setOnClickListener { dialog?.dismiss() }
-        binding.btnRandom.setOnClickListener {
-            dialog?.dismiss()
-            recommendMovie.invoke()
-        }
+
+        PushDownAnim.setPushDownAnimTo(binding.btnRandom)
+            .setScale(PushDownAnim.MODE_SCALE, 0.8F)
+            .setOnClickListener {
+                dialog?.dismiss()
+                recommendMovie.invoke()
+            }
 
         binding.ivPoster.setOnClickListener { navigate.invoke() }
 
         binding.apply {
-            ivPoster.loadImage(movie.poster_path_url)
+            ivPoster.loadImage(movie.posterPathUrl)
             tvTitle.text = movie.title
             tvYear.text = movie.release_date
             var strGenres = ""
-            genresViewModel.genreResponse.observe(viewLifecycleOwner){ result ->
-                when(result){
+            genresViewModel.genreResponse.observe(viewLifecycleOwner) { result ->
+                when (result) {
                     is NetworkResult.Success -> {
                         for (id in movie.genre_ids!!) {
                             result.data?.genres?.map {
-                                if(id == it.id){
+                                if (id == it.id) {
                                     strGenres += it.name + " - "
                                 }
                                 return@map
                             }
                         }
-                        tvGenres.text = strGenres.run {
-                            this.substring(0, this.length - 2)
+
+                        tvGenres.text = if (strGenres.isNotEmpty()) {
+                            strGenres.substring(0, strGenres.length - 2)
+                        } else {
+                            ""
                         }
                     }
                 }

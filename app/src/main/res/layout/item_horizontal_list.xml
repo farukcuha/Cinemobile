@@ -13,13 +13,14 @@
         android:layout_height="180dp"
         tools:ignore="MissingConstraints"
         android:scaleType="centerCrop"
-        android:src="@drawable/image_holder_poster"/>
+        android:contentDescription="@string/list_poster_image"
+        android:src="@drawable/image_holder_poster" />
 
     <TextView
         android:id="@+id/text_view_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Teen Titans Go!"
+        tools:text="Teen Titans Go!"
         android:fontFamily="@font/montserrat_bold"
         android:textSize="14sp"
         android:textColor="@color/color_1"
@@ -29,7 +30,7 @@
         android:id="@+id/text_view_release_year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2014"
+        tools:text="2014"
         android:fontFamily="@font/montserrat_medium"
         android:textSize="14sp"
         android:maxLines="1"

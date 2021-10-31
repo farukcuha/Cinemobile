@@ -14,13 +14,14 @@
         tools:ignore="MissingConstraints"
         android:src="@drawable/image_holder_company"
         android:scaleType="fitCenter"
-        android:padding="8dp"/>
+        android:contentDescription="@string/company_icon"
+        android:padding="8dp" />
 
     <TextView
         android:id="@+id/text_view_production_company_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Warner Bros. Pictures"
+        tools:text="Warner Bros. Pictures"
         android:textSize="14sp"
         android:textColor="@color/color_1"
         android:fontFamily="@font/montserrat_semi_bold"

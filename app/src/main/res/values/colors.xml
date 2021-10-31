@@ -4,4 +4,18 @@
     <color name="color_2">#DBE2EF</color>
     <color name="color_3">#3F72AF</color>
     <color name="color_4">#F9F7F7</color>
+
+    <color name="color_gray_1">#323232</color>
+    <color name="color_gray_2">#939393</color>
+    <color name="color_black">#222222</color>
+
+    <color name="color_spinner_bg">@color/color_2</color>
+    <color name="color_spinner_txt">@color/color_1</color>
+
+    <color name="color_chip_txt">@color/colorChipText</color>
+    <color name="color_chip_bg">@color/colorChipBackground</color>
+    <color name="color_chip_selected_bg">@color/color_1</color>
+    <color name="color_chip_selected_txt">@color/colorChipTextClicked</color>
+    <color name="color_chip_selected_close">@color/colorChipCloseClicked</color>
+    <color name="color_chip_close">@color/colorChipCloseInactive</color>
 </resources>

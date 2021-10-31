@@ -1,4 +1,4 @@
-package com.pandorina.cinemobile
+package com.pandorina.cinemobile.util
 
 import android.app.Activity
 import android.content.Context

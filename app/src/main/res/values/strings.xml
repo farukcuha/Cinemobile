@@ -3,7 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="language">en-US</string>
     <string name="movies">Movies</string>
-    <string name="series">Series</string>
     <string name="search">Search</string>
     <string name="discover">Discover</string>
     <string name="favorite">Favorite</string>
@@ -12,8 +11,6 @@
     <string name="now_playing">Now Playing</string>
     <string name="upcoming">Upcoming</string>
     <string name="settings">Settings</string>
-    <string name="view_all">View All</string>
-    <string name="hello_blank_fragment">Hello World</string>
     <string name="home">Home</string>
     <string name="overview">Overview</string>
     <string name="production_companies">Production Companies</string>
@@ -24,7 +21,6 @@
     <string name="collection">Collection</string>
     <string name="similar">Similar</string>
     <string name="videos">Videos</string>
-    <string name="image">Image</string>
     <string name="search_movie">Search Movie…</string>
     <string name="add_to_favorites">Add to Favorites</string>
     <string name="share">Share</string>
@@ -32,6 +28,8 @@
     <string name="recommend_info">If you can\'t find a movie to watch, don\'t worry. Cinemobile
         recommends you a movie among thousands of movies. All you have to do is click the button
         below. If you long click on the button, you can filter the movie recommendation system.</string>
+    <string name="all_times">All Times</string>
+    <string name="all_languages">All Languages</string>
 
     <string name="english">English</string>
     <string name="turkish">Turkish</string>
@@ -52,20 +50,22 @@
     <string name="hint">Hint</string>
 
     <string-array name="years">
+        <item>@string/all_times</item>
         <item>2021</item>
         <item>2020</item>
         <item>2019</item>
-        <item>2015–2018</item>
-        <item>2010–2014</item>
-        <item>2000–2009</item>
-        <item>1990–1999</item>
-        <item>1980–1989</item>
-        <item>1970–1979</item>
-        <item>1950–1969</item>
-        <item>1900–1949</item>
+        <item>2015 – 2018</item>
+        <item>2010 – 2014</item>
+        <item>2000 – 2009</item>
+        <item>1990 – 1999</item>
+        <item>1980 – 1989</item>
+        <item>1970 – 1979</item>
+        <item>1950 – 1969</item>
+        <item>1900 – 1949</item>
     </string-array>
 
     <string-array name="languages">
+        <item>@string/all_languages</item>
         <item>@string/english</item>
         <item>@string/turkish</item>
         <item>@string/japanese</item>
@@ -83,4 +83,32 @@
         <item>@string/polish</item>
         <item>@string/arabic</item>
     </string-array>
+    <string name="movie_empty_text">We couldn\'t find any movies that match your criteria. Please try to change movie criteria.</string>
+    <string name="submit">SUBMIT</string>
+    <string name="help_dialog_txt">Cinemobile is a movie app that you can discover movies and view their details.\nAlso there is movie recommendation bot. Long click the button, set your configuration and click it. Cinemobile system recommends a movie among thousand of movies.\nPLease share opinions and suggestions about Cinemobile.</string>
+    <string name="vertical_list_poster_image" translatable="false">vertical_list_poster_image</string>
+    <string name="expand_image" translatable="false">expand_image</string>
+    <string name="video_image" translatable="false">video_image</string>
+    <string name="you_tube_icon" translatable="false">you_tube_icon</string>
+    <string name="view_pager_image" translatable="false">view_pager_image</string>
+    <string name="trending_movie_poster_image" translatable="false">trending_movie_poster_image</string>
+    <string name="country_flag" translatable="false">country_flag</string>
+    <string name="company_icon" translatable="false">company_icon</string>
+    <string name="list_poster_image" translatable="false">list_poster_image</string>
+    <string name="cast_image" translatable="false">cast_image</string>
+    <string name="app_logo_icon" translatable="false">app_logo_icon</string>
+    <string name="contact">Contact</string>
+    <string name="share_app">Share App</string>
+    <string name="rate_on_play_store">Rate on Play Store</string>
+    <string name="help">Help</string>
+    <string name="tmdb_icon" translatable="false">tmdb_icon</string>
+    <string name="supported_by_tmdb" translatable="false">Supported by TMDB</string>
+    <string name="clear_all">Clear</string>
+    <string name="close_button" translatable="false">close_button</string>
+    <string name="recommend_movie_poster" translatable="false">recommend_movie_poster</string>
+    <string name="random_button" translatable="false">random_button</string>
+    <string name="detail_movie_poster" translatable="false">detail_movie_poster</string>
+    <string name="detail_backdrop_image" translatable="false">detail_backdrop_image</string>
+    <string name="view_more_button" translatable="false">view_more_button</string>
+    <string name="cinemobile" translatable="false">CINEMOBILE</string>
 </resources>

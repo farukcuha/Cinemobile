@@ -8,7 +8,7 @@ import com.pandorina.cinemobile.util.Util.loadImage
 class CastHolder(private val binding: ItemCastBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Credit){
         binding.apply {
-            imageViewCastImage.loadImage(item.profile_path_url)
+            imageViewCastImage.loadImage(item.profilePathUrl)
             textViewCastRealName.text = item.name
             textViewCastCharacterName.text = item.character
         }

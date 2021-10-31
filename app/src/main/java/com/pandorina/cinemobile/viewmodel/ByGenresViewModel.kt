@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ByGenresViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
-    var currentResult: Flow<PagingData<Movie>>? = null
+    private var currentResult: Flow<PagingData<Movie>>? = null
 
     fun getMoviesByGenres(genreId: Int): Flow<PagingData<Movie>> {
         currentResult?.let {

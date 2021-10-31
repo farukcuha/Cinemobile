@@ -1,6 +1,7 @@
 package com.pandorina.cinemobile.view.fragment
 
 import android.content.Intent
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -15,6 +16,7 @@ import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentDetailBinding
 import com.pandorina.cinemobile.util.Constant
+import com.pandorina.cinemobile.util.Constant.REMOTE_ERROR
 import com.pandorina.cinemobile.util.Util.loadImage
 import com.pandorina.cinemobile.util.Util.setActionBarText
 import com.pandorina.cinemobile.view.adapter.DetailFragmentAdapter
@@ -32,7 +34,7 @@ class DetailFragment :
     override fun observeData() {
         movie = argument as Movie
         movie?.title?.let { setActionBarText(requireActivity(), it) }
-        binding.imageViewMovieDetailBackdropImage.loadImage(movie?.backdrop_path_url)
+        binding.imageViewMovieDetailBackdropImage.loadImage(movie?.backdropPathUrl)
         viewModel.currentMovieId.value = movie?.id
         viewModel.getMovieDetail()
         observeMovieDetail()
@@ -90,15 +92,16 @@ class DetailFragment :
     }
 
     private fun observeMovieDetail() {
-        viewModel.movieDetail.observe(viewLifecycleOwner) { networkResult ->
-            when (networkResult) {
+        viewModel.movieDetail.observe(viewLifecycleOwner) {
+            when (it) {
                 is NetworkResult.Success -> {
-                    movieDetail = networkResult.data
+                    movieDetail = it.data
                     setUpViewPager()
                 }
                 is NetworkResult.Error -> {
-
+                    Log.e(REMOTE_ERROR, it.message.toString())
                 }
+                else -> return@observe
             }
         }
 

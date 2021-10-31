@@ -6,7 +6,10 @@
     android:layout_margin="8dp"
     android:fontFamily="@font/montserrat_bold"
     app:mcv_selectable="true"
-    app:mcv_selectedBackgroundColor="@color/color_1"
-    app:mcv_selectedCloseColor="@color/color_2"
-    app:mcv_selectedTextColor="@color/color_2"
+    app:mcv_selectedBackgroundColor="@color/color_chip_selected_bg"
+    app:mcv_selectedCloseColor="@color/color_chip_selected_close"
+    app:mcv_selectedTextColor="@color/color_chip_selected_txt"
+    app:mcv_textColor="@color/color_chip_txt"
+    app:mcv_closeColor="@color/color_chip_close"
+    app:mcv_backgroundColor="@color/color_chip_bg"
     xmlns:android="http://schemas.android.com/apk/res/android" />

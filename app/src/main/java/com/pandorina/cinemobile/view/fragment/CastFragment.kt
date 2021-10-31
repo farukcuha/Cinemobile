@@ -1,11 +1,13 @@
 package com.pandorina.cinemobile.view.fragment
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentCastBinding
 import com.pandorina.cinemobile.util.Constant
+import com.pandorina.cinemobile.util.Constant.REMOTE_ERROR
 import com.pandorina.cinemobile.view.adapter.CastListAdapter
 import com.pandorina.cinemobile.viewmodel.CastViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,8 +29,9 @@ class CastFragment :
                     }
                 }
                 is NetworkResult.Error -> {
-
+                    Log.e(REMOTE_ERROR, it.message.toString())
                 }
+                else -> return@observe
             }
         }
     }
@@ -42,6 +45,6 @@ class CastFragment :
 
     override fun onResume() {
         super.onResume()
-        binding.root.requestLayout()
+        binding.recyclerViewCast.requestLayout()
     }
 }

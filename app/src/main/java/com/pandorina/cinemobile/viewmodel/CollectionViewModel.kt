@@ -13,10 +13,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CollectionViewModel @Inject constructor(val repository: Repository) : ViewModel() {
+class CollectionViewModel @Inject constructor(val repository: Repository): BaseViewModel(){
     private val _movieCollectionList = MutableLiveData<NetworkResult<Collection>>()
     val movieCollectionList = _movieCollectionList
-    var job: Job? = null
 
     fun getMovieCollection(collectionId: Int) {
         movieCollectionList.value ?: run {
@@ -26,10 +25,5 @@ class CollectionViewModel @Inject constructor(val repository: Repository) : View
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
     }
 }

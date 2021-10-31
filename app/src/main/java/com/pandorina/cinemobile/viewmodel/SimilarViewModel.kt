@@ -13,10 +13,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SimilarViewModel @Inject constructor(val repository: Repository) : ViewModel() {
+class SimilarViewModel @Inject constructor(val repository: Repository): BaseViewModel() {
     private val _similarMovieResponse = MutableLiveData<NetworkResult<MovieResponse>>()
     val similarMovieResponse = _similarMovieResponse
-    var job: Job? = null
 
     fun getSimilarMovies(movieId: Int) {
         similarMovieResponse.value ?: run {
@@ -26,10 +25,5 @@ class SimilarViewModel @Inject constructor(val repository: Repository) : ViewMod
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
     }
 }

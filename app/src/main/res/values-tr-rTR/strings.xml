@@ -3,7 +3,6 @@
     <string name="app_name">Cinemobile</string>
     <string name="language">tr-TR</string>
     <string name="movies">Filmler</string>
-    <string name="series">Diziler</string>
     <string name="search">Ara</string>
     <string name="discover">Keşfet</string>
     <string name="favorite">Favori</string>
@@ -12,7 +11,6 @@
     <string name="now_playing">Vizyonda</string>
     <string name="upcoming">Yaklaşan</string>
     <string name="settings">Ayarlar</string>
-    <string name="view_all">Hepsini Görüntüle</string>
     <string name="home">Anasayfa</string>
     <string name="overview">Özet</string>
     <string name="production_companies">Yapımcı Şirketler</string>
@@ -23,12 +21,10 @@
     <string name="collection">Seri</string>
     <string name="similar">Benzer</string>
     <string name="videos">Video</string>
-    <string name="image">Resim</string>
     <string name="search_movie">Film Ara…</string>
     <string name="add_to_favorites">Favorilere Ekle</string>
     <string name="share">Paylaş</string>
     <string name="trending_today">Trendlerde Bugün</string>
-    <string name="hello_blank_fragment">Merhaba Dünya</string>
 
     <string name="english">İngilizce</string>
     <string name="turkish">Türkçe</string>
@@ -50,8 +46,26 @@
     <string name="recommend_info">İzleyecek bir film bulamadıysan endişelenme. Cinemobile binlerce
         film arasından sana bir film önerir. Tek yapman gereken alttaki butona tıklamak. Butona
         uzun tıklarsan film önerme sistemini filtreleyebilirsin.</string>
+    <string name="all_times">Tüm Zamanlar</string>
+    <string name="all_languages">Tüm diller</string>
+
+    <string-array name="years">
+        <item>@string/all_times</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2015 – 2018</item>
+        <item>2010 – 2014</item>
+        <item>2000 – 2009</item>
+        <item>1990 – 1999</item>
+        <item>1980 – 1989</item>
+        <item>1970 – 1979</item>
+        <item>1950 – 1969</item>
+        <item>1900 – 1949</item>
+    </string-array>
 
     <string-array name="languages">
+        <item>@string/all_languages</item>
         <item>@string/english</item>
         <item>@string/turkish</item>
         <item>@string/japanese</item>
@@ -69,5 +83,13 @@
         <item>@string/polish</item>
         <item>@string/arabic</item>
     </string-array>
+    <string name="movie_empty_text">Seçtiğiniz kriterlere uygun film bulamadık. Lütfen kriterleri değiştirmeyi deneyin.</string>
+    <string name="submit">KAYDET</string>
+    <string name="help_dialog_txt">Cinemobile filmleri keşfedebileceğiniz ve ayrıntılarını görüntüleyebileceğiniz bir film uygulamasıdır. Bunun yanında Cinemobile\'de kullanabileceğiniz bir film önerme botu vardır. Anasayfadaki butona uzun tıklayın, botu ilgi alanınıza göre filtreleyin ve butona tıklayın. Cinemobile binlerece film arasından size izleyebileceğiniz bir film önerir.\nUygulamaya dair görüş ve önerilerinizi bizimle paylaşabilirsiniz.</string>
+    <string name="contact">İletişim</string>
+    <string name="share_app">Uygulamayı Paylaş</string>
+    <string name="rate_on_play_store">Play Store\'da derecelendir</string>
+    <string name="help">Yardım</string>
+    <string name="clear_all">Temizle</string>
 </resources>
 

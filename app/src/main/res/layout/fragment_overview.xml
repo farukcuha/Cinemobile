@@ -21,6 +21,7 @@
             tools:src="@drawable/image_holder_poster"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/detail_movie_poster"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -77,6 +78,10 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:ignore="MissingConstraints">
 
+            <include
+                android:id="@+id/ad_overview_1"
+                layout="@layout/ad_banner" />
+
             <TextView
                 style="@style/header_medium"
                 android:layout_width="match_parent"
@@ -110,6 +115,10 @@
                     tools:itemCount="4"
                     tools:listitem="@layout/item_production_companies" />
             </com.pandorina.cinemobile.util.NestedScrollableHost>
+
+            <include
+                android:id="@+id/ad_overview_2"
+                layout="@layout/ad_banner" />
 
             <TextView
                 android:id="@+id/text_view_movie_overview_production_countries_header"

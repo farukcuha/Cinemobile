@@ -16,9 +16,9 @@ data class Movie(val poster_path: String?,
                  val original_language: String?,
                  val title: String?,
                  val backdrop_path: String?): Parcelable{
-    val poster_path_url: String
+    val posterPathUrl: String
         get() = "${Constant.IMAGE_URL_LOW}$poster_path"
 
-    val backdrop_path_url: String
+    val backdropPathUrl: String
         get() = "${Constant.IMAGE_URL_HIGH}$backdrop_path"
 }

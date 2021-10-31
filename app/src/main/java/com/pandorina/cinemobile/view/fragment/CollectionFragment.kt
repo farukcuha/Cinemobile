@@ -1,10 +1,13 @@
 package com.pandorina.cinemobile.view.fragment
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentCollectionBinding
 import com.pandorina.cinemobile.util.Constant
+import com.pandorina.cinemobile.util.Constant.REMOTE_ERROR
 import com.pandorina.cinemobile.view.adapter.VerticalListAdapter
 import com.pandorina.cinemobile.viewmodel.CollectionViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,8 +23,14 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>(
     override fun observeData() {
         (argument as MovieDetail).belongs_to_collection?.id?.let { viewModel.getMovieCollection(it) }
         viewModel.movieCollectionList.observe(viewLifecycleOwner) {
-            it.data?.let { collection ->
-                collectionAdapter.submitList(collection.parts)
+            when(it){
+                is NetworkResult.Success -> {
+                    collectionAdapter.submitList(it.data?.parts)
+                }
+                is NetworkResult.Error -> {
+                    Log.e(REMOTE_ERROR, it.message.toString())
+                }
+                else -> return@observe
             }
         }
     }
@@ -35,6 +44,6 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>(
 
     override fun onResume() {
         super.onResume()
-        binding.root.requestLayout()
+        binding.recyclerViewCollection.requestLayout()
     }
 }

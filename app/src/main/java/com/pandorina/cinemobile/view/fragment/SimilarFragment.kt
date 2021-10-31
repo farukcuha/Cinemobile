@@ -1,5 +1,6 @@
 package com.pandorina.cinemobile.view.fragment
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pandorina.cinemobile.data.remote.NetworkResult
@@ -25,7 +26,6 @@ class SimilarFragment : BaseFragment<FragmentSimilarBinding>(
 
     override fun setUpViews() {
         binding.root.apply {
-            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
             adapter = similarMoviesAdapter
         }
@@ -40,6 +40,7 @@ class SimilarFragment : BaseFragment<FragmentSimilarBinding>(
                         similarMoviesAdapter.submitList(response.results)
                     }
                 }
+                is NetworkResult.Error -> Log.e(Constant.REMOTE_ERROR, it.message.toString())
                 else -> return@observe
             }
         }

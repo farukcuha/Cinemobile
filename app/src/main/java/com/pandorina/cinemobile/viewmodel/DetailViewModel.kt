@@ -12,11 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(val repository: Repository) : ViewModel() {
+class DetailViewModel @Inject constructor(val repository: Repository): BaseViewModel() {
     val currentMovieId = MutableLiveData<Int>()
     private val _movieDetail: MutableLiveData<NetworkResult<MovieDetail>> = MutableLiveData()
     val movieDetail: LiveData<NetworkResult<MovieDetail>> get() = _movieDetail
-    var job: Job? = null
 
     val isFavoriteMovieExist = liveData {
         currentMovieId.value?.let { movieId ->
@@ -42,10 +41,5 @@ class DetailViewModel @Inject constructor(val repository: Repository) : ViewMode
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        job = null
     }
 }

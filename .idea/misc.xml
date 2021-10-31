@@ -30,25 +30,65 @@
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/menu/movie_detail_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/menu/movie_fragment_action_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/AndroidStudioProjects/CinemobileOld/app/src/main/res/menu/search_fragment_action_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/bg_submit_button.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/btn_bg_shuffle.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/gradient_view_pager.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_cancel.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_cinemobile.xml" value="0.8625" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_close.xml" value="1.08125" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_delete.xml" value="0.2703125" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_discover.xml" value="0.2703125" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_expand.xml" value="0.2703125" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/ic_more.xml" value="0.2703125" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/drawable/logo_tmdb.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/ad_banner.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/button_view_more.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/dialog_fragment_loading.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/dialog_warning.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_by_genres.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_cast.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_collection.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_discover.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_favorites.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_genre_list.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_info_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_more.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_overview.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommend_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommend_info_dialog.xml" value="0.22262773722627738" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_recommended_movie_dialog.xml" value="0.264" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_search.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_similar.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/fragment_videos.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_cast.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_configuration.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_genre.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_genre_chip.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_horizontal_list.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_production_companies.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_production_countries.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_production_group.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_searched_query.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_trend_movie.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_vertical_list.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_video.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/item_view_pager.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/shimmer_group_horizontal_list.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/shimmer_group_vertical_list.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/shimmer_item_cast.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/shimmer_item_horizontal_list.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/shimmer_item_vertical_list.xml" value="0.25" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/layout/shimmer_item_view_pager.xml" value="0.25" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/menu/home_fragment_action_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/menu/movie_detail_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahmet/Desktop/Android Projects/Cinemobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/ahmet/Desktop/Cinemobile/app/src/main/res/drawable/bg_configuration.xml" value="0.2703125" />
         <entry key="..\:/Users/ahmet/Desktop/Cinemobile/app/src/main/res/drawable/bg_shuffle.xml" value="0.2703125" />
         <entry key="..\:/Users/ahmet/Desktop/Cinemobile/app/src/main/res/drawable/ic_baseline_dehaze_24.xml" value="0.2703125" />

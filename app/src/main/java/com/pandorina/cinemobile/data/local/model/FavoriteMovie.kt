@@ -13,9 +13,4 @@ data class FavoriteMovie(
         val backdrop_path: String?,
         val time_stamp: Long = System.currentTimeMillis()
 ){
-    val poster_path_url: String
-        get() = "${Constant.IMAGE_URL_LOW}$poster_path"
-
-    val backdrop_path_url: String
-        get() = "${Constant.IMAGE_URL_HIGH}$backdrop_path"
 }

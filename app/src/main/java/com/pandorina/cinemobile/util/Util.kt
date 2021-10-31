@@ -3,7 +3,6 @@ package com.pandorina.cinemobile.util
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.IBinder
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -23,16 +22,19 @@ object Util {
     }
 
     class Keyboard(val context: Context){
-        private val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        fun show(){ imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0) }
-        fun hide(windowToken: IBinder) { imm.hideSoftInputFromWindow(windowToken, 0) }
+        private val imm =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        fun hide(windowToken: IBinder) {
+            imm.hideSoftInputFromWindow(windowToken, 0)
+        }
     }
 
     fun ImageView.loadImage(url: String?) {
         Glide.with(context)
             .load(url)
             .transition(DrawableTransitionOptions.withCrossFade())
-            .error(R.drawable.image_place_holder)
+            .error(R.drawable.place_holder_image)
             .into(this)
     }
 
@@ -72,23 +74,24 @@ object Util {
     }
 
     fun getLanguageCodeByIndex(id: Int): String{
-        return when(id){
+        return when (id) {
             0 -> "en"
-            1 -> "tr"
-            2 -> "ja"
-            3 -> "fr"
-            4 -> "it"
-            5 -> "es"
-            6 -> "de"
-            7 -> "cn"
-            8 -> "ko"
-            9 -> "cn"
-            10 -> "hi"
-            11 -> "ru"
-            12 -> "se"
-            13 -> "prt"
-            14 -> "pl"
-            15 -> "ar"
+            1 -> "en"
+            2 -> "tr"
+            3 -> "ja"
+            4 -> "fr"
+            5 -> "it"
+            6 -> "es"
+            7 -> "de"
+            8 -> "cn"
+            9 -> "ko"
+            10 -> "cn"
+            11 -> "hi"
+            12 -> "ru"
+            13 -> "se"
+            14 -> "prt"
+            15 -> "pl"
+            16 -> "ar"
             else -> "en"
         }
     }

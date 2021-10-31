@@ -3,26 +3,21 @@ package com.pandorina.cinemobile.view.fragment
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.pandorina.cinemobile.Preferences
 import com.pandorina.cinemobile.R
 import com.pandorina.cinemobile.data.remote.NetworkResult
 import com.pandorina.cinemobile.data.remote.model.Genre
-import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.databinding.FragmentHomeBinding
 import com.pandorina.cinemobile.databinding.ItemConfigurationBinding
 import com.pandorina.cinemobile.databinding.ItemGenreChipBinding
+import com.pandorina.cinemobile.util.CinemobileAd
 import com.pandorina.cinemobile.util.Constant
+import com.pandorina.cinemobile.util.Constant.REMOTE_ERROR
+import com.pandorina.cinemobile.util.Preferences
 import com.pandorina.cinemobile.util.Util
 import com.pandorina.cinemobile.util.Util.navigate
 import com.pandorina.cinemobile.view.adapter.TrendingAdapter
@@ -32,8 +27,9 @@ import com.pandorina.cinemobile.view.dialog.RecommendedMovieDialog
 import com.pandorina.cinemobile.viewmodel.GenresViewModel
 import com.pandorina.cinemobile.viewmodel.HomeViewModel
 import com.robertlevonyan.views.chip.Chip
+import com.thekhaeng.pushdownanim.PushDownAnim
+import com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE
 import dagger.hilt.android.AndroidEntryPoint
-import jp.wasabeef.glide.transformations.BlurTransformation
 import java.util.*
 
 @AndroidEntryPoint
@@ -51,8 +47,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         const val NAME_GENRE = "name_genre"
         const val ID_GENRE = "id_genre"
         const val INFO_DIALOG = "info_dialog"
+        const val EMPTY_DIALOG = "empty_dialog"
         const val RECOMMEND_DIALOG = "recommend_dialog"
         const val MOVIE_DIALOG = "movie_dialog"
+        const val MONTH_DAY = "-01-01"
+        const val CLICK_COUNT = "click_count"
+        const val WAS_INFO_DIALOG_SHOWED = "was_info_dialog_showed"
     }
 
     override fun observeData() {
@@ -62,26 +62,43 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 is NetworkResult.Success -> {
                     trendingAdapter.submitList(it.data?.results)
                     binding.rvTrending.layoutManager?.scrollToPosition(trendingAdapter.currentScrollPosition)
+                    binding.rvTrending.visibility = View.VISIBLE
                 }
+                is NetworkResult.Loading -> {
+                    binding.rvTrending.visibility = View.INVISIBLE
+                }
+                is NetworkResult.Error -> Log.e(REMOTE_ERROR, it.message.toString())
             }
         }
 
-        genreViewModel.genreResponse.observe(viewLifecycleOwner) { result ->
-            when (result) {
+        genreViewModel.genreResponse.observe(viewLifecycleOwner) {
+            when (it) {
                 is NetworkResult.Success -> {
-                    result.data?.let { response ->
-                        binding.btnRandom.setOnLongClickListener {
-                            getBottomSheet(response.genres).show()
-                            true
-                        }
+                    it.data?.let { response ->
+                        var count = Preferences(requireActivity()).sharedPreferences
+                            .getInt(CLICK_COUNT, 1)
+                        PushDownAnim.setPushDownAnimTo(binding.btnRandom2)
+                            .setScale(MODE_SCALE, 0.85F)
+                            .setOnClickListener {
+                                count++
+                                Preferences(requireActivity()).edit().putInt(CLICK_COUNT, count)
+                                    .commit()
+                                if (count % 5 == 0) {
+                                    CinemobileAd.showInterstitialAd(requireActivity()) {
+                                        recommendMovie()
+                                    }
+                                } else {
+                                    recommendMovie()
+                                }
+                            }
+                            .setOnLongClickListener {
+                                getBottomSheet(response.genres).show()
+                                true
+                            }
                     }
                 }
-                is NetworkResult.Loading -> {
-
-                }
-                is NetworkResult.Error -> {
-
-                }
+                is NetworkResult.Error -> Log.e(REMOTE_ERROR, it.message.toString())
+                else -> return@observe
             }
         }
     }
@@ -92,7 +109,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_info -> InfoDialogFragment().show(childFragmentManager, INFO_DIALOG)
+            R.id.menu_info -> InfoDialogFragment(R.string.recommend_info).show(
+                childFragmentManager,
+                INFO_DIALOG
+            )
         }
         return true
     }
@@ -106,44 +126,49 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.trending_today)
         setHasOptionsMenu(true)
 
-        binding.btnRandom.setOnClickListener { recommendMovie() }
-
         binding.rvTrending.apply {
             adapter = trendingAdapter
             setHasFixedSize(true)
         }
 
-        binding.rvTrending.setOnItemSelectedListener {
-            Glide.with(binding.root)
-                .load(trendingAdapter.currentList[it].poster_path_url)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .centerCrop()
-                .apply(bitmapTransform(BlurTransformation(25, 1)))
-                .into(binding.ivHomeBackground)
-        }
+        Preferences(requireActivity()).sharedPreferences.getBoolean(WAS_INFO_DIALOG_SHOWED, false)
+            .let {
+                if (!it) {
+                    InfoDialogFragment(R.string.recommend_info).show(
+                        childFragmentManager,
+                        INFO_DIALOG
+                    )
+                    Preferences(requireActivity()).edit().putBoolean(WAS_INFO_DIALOG_SHOWED, true)
+                        .commit()
+                }
+            }
     }
 
-    private fun recommendMovie(){
+    private fun recommendMovie() {
         val loadingDialog = LoadingDialog()
+        val emptyDialog = InfoDialogFragment(R.string.movie_empty_text)
         loadingDialog.show(childFragmentManager, RECOMMEND_DIALOG)
 
-        val durations = listOf<Long>(1000, 1250, 1500, 1750, 2000)
+        val durations = listOf<Long>(1000, 1150, 1250, 1350, 1450)
         var genres: String? = ""
         var languageCode: String
-        var primaryReleaseYear: String? = "2020"
-        var seconderReleaseYear: String? = "2021"
+        var primaryReleaseYear: String? = "1950$MONTH_DAY"
+        var seconderReleaseYear: String? = "2021$MONTH_DAY"
 
         Preferences(requireActivity()).sharedPreferences.apply {
             getInt(LANGUAGE_INDEX, 0).let {
                 languageCode = Util.getLanguageCodeByIndex(it)
             }
             getString(YEAR, null)?.let {
-                if(it.length == 9){
-                    primaryReleaseYear = it.substring(0,4)
-                    seconderReleaseYear = it.substring(5, 9)
-                } else{
-                    primaryReleaseYear = it
-                    seconderReleaseYear = it
+                if (it.length == 11) {
+                    primaryReleaseYear = it.substring(0, 4) + MONTH_DAY
+                    seconderReleaseYear = it.substring(7, 11) + MONTH_DAY
+                } else if (it == getString(R.string.all_times)) {
+                    primaryReleaseYear = "1950$MONTH_DAY"
+                    seconderReleaseYear = "2021$MONTH_DAY"
+                } else {
+                    primaryReleaseYear = "$it-01-01"
+                    seconderReleaseYear = "$it-12-31"
                 }
             }
             getStringSet(ID_GENRE, null)?.let { set ->
@@ -158,24 +183,61 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             homeViewModel.randomMovieResponse.value?.let {
                 when(it){
                     is NetworkResult.Success -> {
-                        if (it.data?.results?.size!! >= 1){
+                        if (it.data?.results?.isNotEmpty() == true) {
+                            val totalPages = it.data.total_pages
                             val totalResults = it.data.total_results
-                            val randomIndex = if (totalResults > 20){ (Math.random() * 19).toInt() }
-                            else { (Math.random() * totalResults).toInt() }
 
-                            val movie = it.data.results[randomIndex]
+                            val randomPage = (1..totalPages).random()
+                            homeViewModel.getRandomMovies(
+                                genres,
+                                randomPage,
+                                primaryReleaseYear,
+                                seconderReleaseYear,
+                                languageCode
+                            )
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                homeViewModel.randomMovieResponse.value.let { result ->
+                                    when (result) {
+                                        is NetworkResult.Success -> {
+                                            val randomIndex = if (totalResults >= 20) {
+                                                (0..19).random()
+                                            } else {
+                                                (0 until totalResults).random()
+                                            }
 
-                            val navigateToMovieDetail: () -> Unit = {
-                                binding.root.navigate(R.id.detailFragment, Constant.ARG_MOVIE, movie)
-                            }
-                            RecommendedMovieDialog(movie, navigateToMovieDetail,
-                                { recommendMovie() }).show(childFragmentManager, MOVIE_DIALOG)
+                                            val movie = result.data!!.results[randomIndex]
+
+                                            val navigateToMovieDetail: () -> Unit = {
+                                                binding.root.navigate(
+                                                    R.id.detailFragment,
+                                                    Constant.ARG_MOVIE,
+                                                    movie
+                                                )
+                                            }
+                                            RecommendedMovieDialog(movie, navigateToMovieDetail,
+                                                { recommendMovie() }).show(
+                                                childFragmentManager,
+                                                MOVIE_DIALOG
+                                            )
+                                            loadingDialog.dismiss()
+                                        }
+                                        is NetworkResult.Error -> {
+                                            Log.e(REMOTE_ERROR, it.message.toString())
+                                            loadingDialog.dismiss()
+                                            emptyDialog.show(parentFragmentManager, EMPTY_DIALOG)
+                                        }
+                                    }
+                                }
+                            }, durations.random())
+                        } else {
                             loadingDialog.dismiss()
+                            emptyDialog.show(parentFragmentManager, EMPTY_DIALOG)
                         }
-                        loadingDialog.dismiss()
                     }
                     is NetworkResult.Error -> {
                         loadingDialog.dismiss()
+                        emptyDialog.show(parentFragmentManager, EMPTY_DIALOG)
+                        Log.d(REMOTE_ERROR, it.message.toString())
                     }
                     else -> return@let
                 }

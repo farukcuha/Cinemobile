@@ -17,6 +17,7 @@ class NestedScrollableHost : FrameLayout {
     private var touchSlop = 0
     private var initialX = 0f
     private var initialY = 0f
+
     private val parentViewPager: ViewPager2?
         get() {
             var v: View? = parent as? View

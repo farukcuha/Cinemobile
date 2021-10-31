@@ -11,5 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/image_holder_poster"/>
+        android:contentDescription="@string/trending_movie_poster_image"
+        android:src="@drawable/image_holder_poster" />
 </androidx.cardview.widget.CardView>

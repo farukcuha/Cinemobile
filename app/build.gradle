@@ -91,17 +91,20 @@ dependencies {
     // Recycler cover flow
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 
-    // Custom button
-    implementation 'com.github.medyo:fancybuttons:1.9.1'
-
     // Custom chip group
     implementation "com.robertlevonyan.view:MaterialChipView:2.2.7"
 
     // Custom spinner
     implementation "com.github.skydoves:powerspinner:1.1.9"
 
-    // Blur transformation
-    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+    // Custom button
+    implementation('com.github.thekhaeng:pushdown-anim-click:1.1.1') {
+        exclude group: 'com.android.support'
+    }
+
+    // Google Ad
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

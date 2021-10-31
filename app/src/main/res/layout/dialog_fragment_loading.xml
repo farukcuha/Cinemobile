@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="100dp">
+        app:cardCornerRadius="20dp">
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="125dp"

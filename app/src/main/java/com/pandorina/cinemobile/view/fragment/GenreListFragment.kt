@@ -1,5 +1,6 @@
 package com.pandorina.cinemobile.view.fragment
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pandorina.cinemobile.R
@@ -18,21 +19,13 @@ class GenreListFragment :
     private val mAdapter = GenreListAdapter()
 
     override fun observeData() {
-        viewModel.genreResponse.observe(viewLifecycleOwner) { response ->
-            when (response) {
+        viewModel.genreResponse.observe(viewLifecycleOwner) {
+            when (it) {
                 is NetworkResult.Success -> {
-                    response.data?.let {
-                        mAdapter.apply {
-                            submitList(it.genres)
-                        }
-                    }
+                    mAdapter.submitList(it.data?.genres)
                 }
-                is NetworkResult.Loading -> {
-
-                }
-                is NetworkResult.Error -> {
-
-                }
+                is NetworkResult.Error -> Log.e(Constant.REMOTE_ERROR, it.message.toString())
+                else -> return@observe
             }
         }
     }
