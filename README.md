@@ -1,7 +1,8 @@
 # Cinemobile
 ### Cinemobile is an android application that allows you to discover movies. There is a movie recommend bot. When you click it Cinemobile recommends you a movie. Also there is search support. The user can search any movies among thousand of movies.
+<img src="https://img.shields.io/badge/language-kotlin-blueviolet?style=plastic&logo=kotlin" alt="language"> <img src="https://img.shields.io/badge/api-21+-red?style=plastic&logo=android" alt="language"> <img src="https://img.shields.io/badge/architecture-mvvm-yellow?style=plastic" alt="language">
 
-## Features
+## Libraries
 - <a href="https://github.com/square/retrofit">Retrofit</a> -> to fetch movie datas from TMDB.
 - <a href="https://developer.android.com/training/data-storage/room">Room</a> -> to save users favorite movies to local database.
 - <a href="https://developer.android.com/topic/libraries/architecture/viewmodel">ViewModel</a> -> to hold live-data and flow datas.
