@@ -15,11 +15,14 @@ import com.pandorina.cinemobile.data.local.model.FavoriteMovie
 import com.pandorina.cinemobile.data.remote.model.Movie
 import com.pandorina.cinemobile.data.remote.model.MovieDetail
 import com.pandorina.cinemobile.databinding.FragmentDetailBinding
+import com.pandorina.cinemobile.util.CinemobileAd
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Constant.REMOTE_ERROR
+import com.pandorina.cinemobile.util.Preferences
 import com.pandorina.cinemobile.util.Util.loadImage
 import com.pandorina.cinemobile.util.Util.setActionBarText
 import com.pandorina.cinemobile.view.adapter.DetailFragmentAdapter
+import com.pandorina.cinemobile.view.fragment.HomeFragment.Companion.CLICK_COUNT
 import com.pandorina.cinemobile.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,6 +45,12 @@ class DetailFragment :
 
     override fun setUpViews() {
         setHasOptionsMenu(true)
+        var count = Preferences(requireActivity()).sharedPreferences.getInt(CLICK_COUNT, 1)
+        count ++
+        Preferences(requireActivity()).edit().putInt(CLICK_COUNT, count).commit()
+        if (count % 4 == 0) {
+            CinemobileAd.showInterstitialAd(requireActivity())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

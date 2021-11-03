@@ -11,13 +11,12 @@ import com.pandorina.cinemobile.R
 object CinemobileAd {
     fun getAdRequest(): AdRequest = AdRequest.Builder().build()
 
-    fun showInterstitialAd(activity: Activity, recommendMovie: () -> Unit) {
+    fun showInterstitialAd(activity: Activity) {
         var mInterstitialAd: InterstitialAd?
         InterstitialAd.load(activity, activity.getString(R.string.ad_interstitial_unit_id), getAdRequest(),
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     mInterstitialAd = null
-                    recommendMovie.invoke()
                 }
 
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
@@ -25,10 +24,6 @@ object CinemobileAd {
                     mInterstitialAd?.show(activity)
                     mInterstitialAd?.fullScreenContentCallback =
                         object : FullScreenContentCallback() {
-                            override fun onAdDismissedFullScreenContent() {
-                                recommendMovie.invoke()
-                            }
-
                             override fun onAdShowedFullScreenContent() {
                                 mInterstitialAd = null
                             }

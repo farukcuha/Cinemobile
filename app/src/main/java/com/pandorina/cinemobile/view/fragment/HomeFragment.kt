@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.fragment.app.viewModels
@@ -75,21 +76,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             when (it) {
                 is NetworkResult.Success -> {
                     it.data?.let { response ->
-                        var count = Preferences(requireActivity()).sharedPreferences
-                            .getInt(CLICK_COUNT, 1)
                         PushDownAnim.setPushDownAnimTo(binding.btnRandom2)
                             .setScale(MODE_SCALE, 0.85F)
                             .setOnClickListener {
-                                count++
-                                Preferences(requireActivity()).edit().putInt(CLICK_COUNT, count)
-                                    .commit()
-                                if (count % 5 == 0) {
-                                    CinemobileAd.showInterstitialAd(requireActivity()) {
-                                        recommendMovie()
-                                    }
-                                } else {
-                                    recommendMovie()
-                                }
+                                recommendMovie()
                             }
                             .setOnLongClickListener {
                                 getBottomSheet(response.genres).show()
@@ -199,12 +189,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                                 homeViewModel.randomMovieResponse.value.let { result ->
                                     when (result) {
                                         is NetworkResult.Success -> {
-                                            val randomIndex = if (totalResults >= 20) {
+                                            val randomIndex: Int = if (randomPage != totalPages){
                                                 (0..19).random()
                                             } else {
-                                                (0 until totalResults).random()
+                                                (0 until totalResults % (totalPages * 20)).random()
                                             }
-
                                             val movie = result.data!!.results[randomIndex]
 
                                             val navigateToMovieDetail: () -> Unit = {
@@ -226,6 +215,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                                             loadingDialog.dismiss()
                                             emptyDialog.show(parentFragmentManager, EMPTY_DIALOG)
                                         }
+                                        else -> return@let
                                     }
                                 }
                             }, durations.random())
