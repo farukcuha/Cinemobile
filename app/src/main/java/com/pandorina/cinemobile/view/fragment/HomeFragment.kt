@@ -177,7 +177,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                             val totalPages = it.data.total_pages
                             val totalResults = it.data.total_results
 
+                            Log.d("total_pages", totalPages.toString())
+                            Log.d("total_result", totalResults.toString())
+
                             val randomPage = (1..totalPages).random()
+                            Log.d("random_page", randomPage.toString())
+
                             homeViewModel.getRandomMovies(
                                 genres,
                                 randomPage,
@@ -192,8 +197,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                                             val randomIndex: Int = if (randomPage != totalPages){
                                                 (0..19).random()
                                             } else {
-                                                (0 until totalResults % (totalPages * 20)).random()
+                                                (0 until totalResults - (totalPages - 1) * 20).random()
                                             }
+                                            Log.d("random_index", randomIndex.toString())
                                             val movie = result.data!!.results[randomIndex]
 
                                             val navigateToMovieDetail: () -> Unit = {
