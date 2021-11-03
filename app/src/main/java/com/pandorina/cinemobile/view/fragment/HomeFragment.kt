@@ -40,7 +40,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val trendingAdapter = TrendingAdapter()
 
-    companion object{
+    companion object {
         const val YEAR = "year"
         const val LANGUAGE = "language"
         const val YEAR_INDEX = "year_index"
@@ -52,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         const val RECOMMEND_DIALOG = "recommend_dialog"
         const val MOVIE_DIALOG = "movie_dialog"
         const val MONTH_DAY = "-01-01"
-        const val CLICK_COUNT = "click_count"
+        const val ACTION_COUNT_FOR_AD = "action_count_for_ad"
         const val WAS_INFO_DIALOG_SHOWED = "was_info_dialog_showed"
     }
 
