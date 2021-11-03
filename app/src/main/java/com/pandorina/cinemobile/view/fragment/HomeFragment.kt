@@ -4,7 +4,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.fragment.app.viewModels
@@ -15,7 +14,6 @@ import com.pandorina.cinemobile.data.remote.model.Genre
 import com.pandorina.cinemobile.databinding.FragmentHomeBinding
 import com.pandorina.cinemobile.databinding.ItemConfigurationBinding
 import com.pandorina.cinemobile.databinding.ItemGenreChipBinding
-import com.pandorina.cinemobile.util.CinemobileAd
 import com.pandorina.cinemobile.util.Constant
 import com.pandorina.cinemobile.util.Constant.REMOTE_ERROR
 import com.pandorina.cinemobile.util.Preferences
@@ -181,6 +179,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                             Log.d("total_result", totalResults.toString())
 
                             val randomPage = (1..totalPages).random()
+
                             Log.d("random_page", randomPage.toString())
 
                             homeViewModel.getRandomMovies(
@@ -199,7 +198,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                                             } else {
                                                 (0 until totalResults - (totalPages - 1) * 20).random()
                                             }
+
                                             Log.d("random_index", randomIndex.toString())
+
                                             val movie = result.data!!.results[randomIndex]
 
                                             val navigateToMovieDetail: () -> Unit = {

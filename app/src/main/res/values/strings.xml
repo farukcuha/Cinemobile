@@ -111,4 +111,5 @@
     <string name="detail_backdrop_image" translatable="false">detail_backdrop_image</string>
     <string name="view_more_button" translatable="false">view_more_button</string>
     <string name="cinemobile" translatable="false">CINEMOBILE</string>
+    <string name="cinemobile_release_title" translatable="false">Cinemobile \n 1.0</string>
 </resources>
