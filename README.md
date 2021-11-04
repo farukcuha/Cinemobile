@@ -1,7 +1,7 @@
 # Cinemobile
 ### Cinemobile is an android application that allows you to discover movies. There is a movie recommend bot. When you click it Cinemobile recommends you a movie. Also there is search support. The user can search any movies among thousand of movies.
 
-<a href='https://play.google.com/store/apps/details?id=com.pandorina.cinemobile&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="225px"/></a>
+<a href='https://play.google.com/store/apps/details?id=com.pandorina.cinemobile&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="225px" target="_blank"/></a>
 
 <img src="https://img.shields.io/badge/language-kotlin-blueviolet?style=plastic&logo=kotlin" alt="language"> <img src="https://img.shields.io/badge/api-21+-red?style=plastic&logo=android" alt="language"> <img src="https://img.shields.io/badge/architecture-mvvm-yellow?style=plastic" alt="language">
 
